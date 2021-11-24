@@ -20,8 +20,21 @@ namespace Amazoom
         private void customerBtn_Click(object sender, EventArgs e)
         {
             var customer = new customer1();
+            
 
             customer.Show();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminBtn_Click(object sender, EventArgs e)
+        {
+            var admin = new managerOverall();
+            admin.Show();
+
         }
     }
 }

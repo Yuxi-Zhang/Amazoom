@@ -54,6 +54,7 @@ namespace Amazoom
             this.adminBtn.TabIndex = 1;
             this.adminBtn.Text = "Administrator";
             this.adminBtn.UseVisualStyleBackColor = true;
+            this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
             // 
             // textBox1
             // 
@@ -76,6 +77,7 @@ namespace Amazoom
             this.Controls.Add(this.customerBtn);
             this.Name = "Home";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Home_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

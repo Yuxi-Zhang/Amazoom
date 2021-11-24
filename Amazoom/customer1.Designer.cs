@@ -599,7 +599,7 @@ namespace Amazoom
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(318, 96);
             this.label7.TabIndex = 26;
-            this.label7.Text = "A";
+            this.label7.Text = "B";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
@@ -613,7 +613,7 @@ namespace Amazoom
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(318, 96);
             this.label8.TabIndex = 27;
-            this.label8.Text = "A";
+            this.label8.Text = "C";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -627,7 +627,7 @@ namespace Amazoom
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(318, 96);
             this.label9.TabIndex = 28;
-            this.label9.Text = "A";
+            this.label9.Text = "D";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
@@ -641,7 +641,7 @@ namespace Amazoom
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(318, 96);
             this.label10.TabIndex = 29;
-            this.label10.Text = "A";
+            this.label10.Text = "E";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
@@ -655,7 +655,7 @@ namespace Amazoom
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(318, 96);
             this.label11.TabIndex = 30;
-            this.label11.Text = "A";
+            this.label11.Text = "F";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
@@ -669,7 +669,7 @@ namespace Amazoom
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(318, 96);
             this.label12.TabIndex = 31;
-            this.label12.Text = "A";
+            this.label12.Text = "G";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
@@ -683,7 +683,7 @@ namespace Amazoom
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(318, 96);
             this.label13.TabIndex = 32;
-            this.label13.Text = "A";
+            this.label13.Text = "H";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label14
@@ -697,7 +697,7 @@ namespace Amazoom
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(318, 97);
             this.label14.TabIndex = 33;
-            this.label14.Text = "A";
+            this.label14.Text = "I";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox1
