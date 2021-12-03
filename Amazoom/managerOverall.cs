@@ -20,12 +20,14 @@ namespace Amazoom
 
         private void Alert_Click(object sender, EventArgs e)
         {
-
+            var alert = new Alert();
+            alert.Show();
         }
 
         private void RobotStatus_Click(object sender, EventArgs e)
         {
-
+            var robotstatus = new StatusOfRobot();
+            robotstatus.Show();
         }
 
         private void OrderStatus_Click(object sender, EventArgs e)
@@ -36,7 +38,8 @@ namespace Amazoom
 
         private void Stock_Click(object sender, EventArgs e)
         {
-
+            var stockstatus = new Stock();
+            stockstatus.Show();
         }
 
         private void managerOverall_Load(object sender, EventArgs e)

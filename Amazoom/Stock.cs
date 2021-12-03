@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace Amazoom
 {
-    public partial class OrderStatus : Form
+    public partial class Stock : Form
     {
-        public OrderStatus()
+        public Stock()
         {
             InitializeComponent();
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
