@@ -58,6 +58,53 @@ namespace Amazoom
         private void order_Click(object sender, EventArgs e)
         {
             AddItem("AA", "in stocks", "80");
+
+            var customer2 = new customer2();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            customer2.Show();
         }
 
 
