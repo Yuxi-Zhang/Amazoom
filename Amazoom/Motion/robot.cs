@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Amazoom.Motion
 {
@@ -47,28 +48,28 @@ namespace Amazoom.Motion
             {
                 int[,] currentItem = items[0];
                 flag = warehouse.mapRealTimeInfo(robotX, robotY);
-
+                Console.WriteLine("Name of current running " + "thread: {0}", Thread.CurrentThread.Name);
                 if (flag == false)
                 {
                     if (robotX < currentItem[0, 0] && (robotX == 0 || robotY == warehouse.mapX))
                     {
                         robotX += 1;
-                        Thread.Sleep(200);
+                        
                     }
                     else if (robotY < currentItem[0, 1])
                     {
                         robotY += 1;
-                        Thread.Sleep(200);
+                        
                     }
                     else if (robotY > currentItem[0, 1])
                     {
                         robotY -= 1;
-                        Thread.Sleep(200);
+                       
                     }
                     else if (robotX > currentItem[0, 0] && (robotX == 0 || robotY == warehouse.mapX))
                     {
                         robotX -= 1;
-                        Thread.Sleep(200);
+                        
                     }
                     if (robotX == currentItem[0, 0] && robotY == currentItem[0, 1])
                     {

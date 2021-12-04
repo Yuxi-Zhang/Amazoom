@@ -47,15 +47,21 @@ namespace Amazoom
                 }
             }
 
-            int[,] items = new int[4, 2] { { 1, 2 }, { 1, 3 }, { 2, 3 }, { 2, 5 } };
+           
 
+            Console.WriteLine("main is working");
 
-            // create a list for robot item lists
-            /*for (i = 0; i < robotNumber; i++)
+            //// create a list for robot item lists
+            for (i = 0; i < robotNumber; i++)
             {
                 List<int[,]> itemList = new List<int[,]>();
                 itemListMaster.Add(itemList);
-            }*/
+            }
+
+            itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 5 }, { 2, 1 }, { 2, 5 } });
+            itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 5 } });
+            itemListMaster[2].Add(new int[,] { { 6, 2 }, { 6, 3 }, { 6, 5 } });
+            itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 2 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 3 }, { 8, 5 } });
 
             // could do a test here
             for (i = 0; i < robotNumber; i++)
@@ -78,40 +84,41 @@ namespace Amazoom
                 }*/
 
                 // Test 1, 随机
-                itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 5 }, { 2, 1 }, { 2, 5 } });
-                itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 5 } });
-                itemListMaster[2].Add(new int[,] { { 6, 2 }, { 6, 3 }, {6, 5} });
-                itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 2 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 3 }, { 8, 5 } });
 
                 // Test 2, 所有机器人所有位置都要拿东西
-                itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
-                itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } });
-                itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
-                itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 2 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 1 }, { 8, 2 }, { 8, 3 }, { 8, 4 }, { 8, 5 } });
+                //itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
+                //itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } });
+                //itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
+                //itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 2 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 1 }, { 8, 2 }, { 8, 3 }, { 8, 4 }, { 8, 5 } });
 
-                // Test 3, 只有一个机器人工作
-                itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
-                itemListMaster[1].Add(new int[,] {});
-                itemListMaster[2].Add(new int[,] {});
-                itemListMaster[3].Add(new int[,] {});
+                //// Test 3, 只有一个机器人工作
+                //itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
+                //itemListMaster[1].Add(new int[,] {});
+                //itemListMaster[2].Add(new int[,] {});
+                //itemListMaster[3].Add(new int[,] {});
 
-                // Test 4, 只有一个机器人没有工作
-                itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
-                itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } });
-                itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
-                itemListMaster[3].Add(new int[,] {});
+                //// Test 4, 只有一个机器人没有工作
+                //itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 2, 5 } });
+                //itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 2 }, { 3, 3 }, { 3, 4 }, { 3, 5 }, { 4, 1 }, { 4, 2 }, { 4, 3 }, { 4, 4 }, { 4, 5 } });
+                //itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
+                //itemListMaster[3].Add(new int[,] {});
 
-                // Test 5, 有的机器人没有工作, 有的随机拿
-                itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 2, 5 } });
-                itemListMaster[1].Add(new int[,] {});
-                itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
-                itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 5 }, { 8, 1 }, { 8, 5 } });
+                //// Test 5, 有的机器人没有工作, 有的随机拿
+                //itemListMaster[0].Add(new int[,] { { 1, 1 }, { 1, 2 }, { 1, 3 }, { 2, 5 } });
+                //itemListMaster[1].Add(new int[,] {});
+                //itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 2 }, { 5, 3 }, { 5, 4 }, { 5, 5 }, { 6, 1 }, { 6, 2 }, { 6, 3 }, { 6, 4 }, { 6, 5 } });
+                //itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 5 }, { 8, 1 }, { 8, 5 } });
 
-                // Test 6, 
-                itemListMaster[0].Add(new int[,] {});
-                itemListMaster[1].Add(new int[,] { { 3, 1 }});
-                itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 3 }, { 5, 5 }, { 6, 2 }, { 6, 4 } });
-                itemListMaster[3].Add(new int[,] {});
+                //// Test 6, 
+                //itemListMaster[0].Add(new int[,] {});
+                //itemListMaster[1].Add(new int[,] { { 3, 1 }});
+                //itemListMaster[2].Add(new int[,] { { 5, 1 }, { 5, 3 }, { 5, 5 }, { 6, 2 }, { 6, 4 } });
+                //itemListMaster[3].Add(new int[,] {});
+
+            }
+
+            for (i = 0; i < robotNumber; i++)
+            {
 
             }
 
@@ -122,6 +129,8 @@ namespace Amazoom
                 {
                     robotList[i].findRoute(itemListMaster[i]);
                 });
+                thread.Start();
+                thread.Join();
             }
         }
     }
