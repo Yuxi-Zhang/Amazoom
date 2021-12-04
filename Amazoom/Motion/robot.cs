@@ -10,6 +10,8 @@ namespace Amazoom.Motion
     class robot
     {
         public int maxCapacity;
+        public int columnMin;
+        public int columnMax;
         public double speed;
         public int robotNumber;
         public int totalRobot;
@@ -19,15 +21,18 @@ namespace Amazoom.Motion
         public int robotY;
         public int itemsInRobot;
         public int robotManageColumn;
+        
 
 
-        public robot(int maxCapacity, double speed, warehouseMapInfo warehouse)
+        public robot(int maxCapacity, double speed, warehouseMapInfo warehouse, int columnMin, int columnMax)
         {
             this.maxCapacity = maxCapacity;
             this.speed = speed;
             this.robotNumber = maxCapacity;
             this.warehouse = warehouse;
             this.itemsInRobot = 0;
+            this.columnMax = columnMax;
+            this.columnMin = columnMin;
         }
 
         public void findRoute(List<int[,]> items)
