@@ -35,9 +35,16 @@ namespace Amazoom
             int column = warehouse1.mapX % robotNumber;
             for (i = 0; i < robotNumber; i++)
             {
-                robot bot = new robot(6, 1, warehouse1, i*column,(i+1)*column-1);
-                robotList.Add(bot);
-                //01 23 45 67
+                if (i != robotNumber - 1)
+                {
+                    robot bot = new robot(6, 1, warehouse1, i * column, (i + 1) * column - 1);
+                    robotList.Add(bot);
+                }
+                else
+                {
+                    robot bot = new robot(6, 1, warehouse1, i * column, warehouse1.mapX);
+                    robotList.Add(bot);
+                }
             }
 
             int[,] items = new int[4, 2] { { 1, 2 }, { 1, 3 }, { 2, 3 }, { 2, 5 } };
