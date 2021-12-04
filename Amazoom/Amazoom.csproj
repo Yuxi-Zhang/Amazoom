@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Item\dock.cs" />
+    <Compile Include="Item\goods.cs" />
+    <Compile Include="Item\inventory.cs" />
+    <Compile Include="Item\order.cs" />
+    <Compile Include="Item\totalList.cs" />
+    <Compile Include="Item\Truck.cs" />
     <Compile Include="Motion\robot.cs" />
     <Compile Include="Motion\robotHelperFunction.cs" />
     <Compile Include="Motion\warehouseMapInfo.cs" />
