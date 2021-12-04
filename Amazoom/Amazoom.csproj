@@ -46,72 +46,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alert.cs">
+    <Compile Include="Motion\robot.cs" />
+    <Compile Include="Motion\robotHelperFunction.cs" />
+    <Compile Include="Motion\warehouseMapInfo.cs" />
+    <Compile Include="Winform\Alert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Alert.Designer.cs">
+    <Compile Include="Winform\Alert.Designer.cs">
       <DependentUpon>Alert.cs</DependentUpon>
     </Compile>
-    <Compile Include="customer1.cs">
+    <Compile Include="Winform\customer1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="customer1.Designer.cs">
+    <Compile Include="Winform\customer1.Designer.cs">
       <DependentUpon>customer1.cs</DependentUpon>
     </Compile>
-    <Compile Include="customer2.cs">
+    <Compile Include="Winform\customer2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="customer2.Designer.cs">
+    <Compile Include="Winform\customer2.Designer.cs">
       <DependentUpon>customer2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Winform\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Winform\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="managerOverall.cs">
+    <Compile Include="Winform\managerOverall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="managerOverall.designer.cs">
+    <Compile Include="Winform\managerOverall.designer.cs">
       <DependentUpon>managerOverall.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderStatus.cs">
+    <Compile Include="Winform\OrderStatus.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderStatus.designer.cs">
+    <Compile Include="Winform\OrderStatus.designer.cs">
       <DependentUpon>OrderStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusOfRobot.cs">
+    <Compile Include="Winform\StatusOfRobot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StatusOfRobot.Designer.cs">
+    <Compile Include="Winform\StatusOfRobot.Designer.cs">
       <DependentUpon>StatusOfRobot.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stock.cs">
+    <Compile Include="Winform\Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stock.Designer.cs">
+    <Compile Include="Winform\Stock.Designer.cs">
       <DependentUpon>Stock.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Alert.resx">
+    <EmbeddedResource Include="Winform\Alert.resx">
       <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="customer1.resx">
+    <EmbeddedResource Include="Winform\customer1.resx">
       <DependentUpon>customer1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="customer2.resx">
+    <EmbeddedResource Include="Winform\customer2.resx">
       <DependentUpon>customer2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Winform\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="managerOverall.resx">
+    <EmbeddedResource Include="Winform\managerOverall.resx">
       <DependentUpon>managerOverall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderStatus.resx">
+    <EmbeddedResource Include="Winform\OrderStatus.resx">
       <DependentUpon>OrderStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -123,10 +126,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StatusOfRobot.resx">
+    <EmbeddedResource Include="Winform\StatusOfRobot.resx">
       <DependentUpon>StatusOfRobot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stock.resx">
+    <EmbeddedResource Include="Winform\Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
