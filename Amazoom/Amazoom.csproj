@@ -49,6 +49,7 @@
     <Compile Include="Item\dock.cs" />
     <Compile Include="Item\goods.cs" />
     <Compile Include="Item\inventory.cs" />
+    <Compile Include="Item\main1.cs" />
     <Compile Include="Item\order.cs" />
     <Compile Include="Item\totalList.cs" />
     <Compile Include="Item\Truck.cs" />
