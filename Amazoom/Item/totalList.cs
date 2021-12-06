@@ -27,14 +27,33 @@ namespace Amazoom.Item
         }
 
 
+        public static List<int[,]> poslist(List<goods> total)
+        {
+            List<int[,]> fulllist = new List<int[,]>();
+            int[,] itempos = new int[1, 1];
 
 
-        public static List<int[,]> findpos(goods theitem)
+            for(int i=0; i<total.Count; i++)
+            {
+
+                itempos = findpos(total[i]);
+                fulllist.Add(itempos);
+
+            }
+
+
+
+
+
+            return fulllist;
+        }
+
+        public static int[,] findpos(goods theitem)
         {
 
 
-            List<int[,]> position = new List<int[,]>();
-            int[,] itempos = new int[1, 1];
+            int[,] position = new int[1,1];
+           // int[,] itempos = new int[1, 1];
 
 
             for (int i = 0; i < storage.Count; i++)
@@ -42,14 +61,14 @@ namespace Amazoom.Item
 
                 if (storage[i].item == theitem)
                 {
-                    for (int j = 0; j < storage[i].posx.Count; j++)
+                    // for (int j = 0; j < storage[i].posx.Count; j++)
 
-                        //      int num = 0;
+                    //      int num = 0;
 
-                        //  py = storage[i].posy[j];
-                        // px = storage[i].posx[j];
-                        itempos.SetValue(storage[i].posx[j], storage[i].posy[j]);
-                    position.Add(itempos);
+                    //  py = storage[i].posy[j];
+                    // px = storage[i].posx[j];
+                    // itempos.SetValue(storage[i].posx[j], storage[i].posy[j]);
+                    position.SetValue(storage[i].posx[0], storage[i].posy[0]);
                 }
 
 
