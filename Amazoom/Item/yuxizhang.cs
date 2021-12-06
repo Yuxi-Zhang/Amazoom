@@ -33,7 +33,7 @@ namespace Amazoom.Item
             testfind = totallist.findpos(testitem);
 
 
-            Console.WriteLine("{0},{1}\n {2}", testfind[0, 0], testfind[0, 1],williamzhang);
+            Console.WriteLine("{0},{1}\n {2}", testfind[0, 0], testfind[0, 1], williamzhang);
             Thread.Sleep(30000);
             Console.WriteLine("{0},{1}\n {2}", testfind[0, 0], testfind[0, 1], williamzhang);
 
