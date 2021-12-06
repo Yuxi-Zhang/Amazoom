@@ -20,6 +20,7 @@ namespace Amazoom.Motion
         public int itemsInRobot;
         public int RobotID;
         bool flag = true;
+        bool criticalCheckFlag;
 
 
 
@@ -41,84 +42,72 @@ namespace Amazoom.Motion
             robotX = 0;
             robotY = 0;
             int listsize = items.Count;
+            int[,] xy;
 
             Console.WriteLine("Robot ID: " + RobotID.ToString() + " is working");
+
             for (i = 0; i < listsize; i++)
             {
                 int[,] currentItem = items[0];
-
+                Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
                 //robot find items before full(with optimized path finder)
                 while (true)
                 {
-                    if (robotX < currentItem[0, 0])
-                    {
-                        if (robotY == 0 || robotY == warehouse.mapY)
-                            robotX += 1;
 
-                        else if (robotY < 1.0 / 2.0 * warehouse.mapY && currentItem[0, 1] < 1.0 / 2.0 * warehouse.mapY)
-                            robotY--;
-                        else
-                            robotY++;
+                    xy = advacnePathFinder(robotX, robotY, currentItem);
+                    robotX = xy[0, 0];
+                    robotY = xy[0, 1];
 
-                    }
-                    else if (robotX > currentItem[0, 0]) //&& (robotX == 0 || robotY == warehouse.mapX)
-                    {
-                        if (robotY == 0 || robotY == warehouse.mapY)
-                            robotX -= 1;
-
-                        else if (robotY < 1.0 / 2.0 * warehouse.mapY && currentItem[0, 1] < 1.0 / 2.0 * warehouse.mapY)
-                            robotY--;
-                        else
-                            robotY++;
-
-                    }
-                    else if (robotY < currentItem[0, 1])
-                    {
-                        robotY += 1;
-
-                    }
-                    else if (robotY > currentItem[0, 1])
-                    {
-                        robotY -= 1;
-
-                    }
-                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
                     if (robotX == currentItem[0, 0] && robotY == currentItem[0, 1])
                     {
-                        items.RemoveAt(0);
+                        if (items.Count > 0)
+                        {
+                            items.RemoveAt(0);
+                            Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
+                        }
                         itemsInRobot++;
-                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" Pick up item {i} (location: {robotX}, {robotY})");
-
-                        break;
+                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" picks up item {i} (location: {robotX}, {robotY}) and items in robot: {itemsInRobot}");
+                        if ((itemsInRobot == maxCapacity || i == listsize - 1) == false)
+                            break;
+                        else { };
                     }
 
-                    Thread.Sleep(500);
+                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
                     //when reach its maxcapacity
-                    while (itemsInRobot == maxCapacity)
+                    while (itemsInRobot == maxCapacity || i == listsize - 1)
                     {
-                        //flag = warehouse.mapRealTimeInfo(robotX, robotY);
-
-
-                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" heading to dock ");
-                        int[,] xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
+                        Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" is heading to dock");
+                        xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
                         robotX = xy[0, 0];
                         robotY = xy[0, 1];
-                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrive dock (location: {robotX}, {robotY})");
+
+                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
 
                         if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
                         {
-                            itemsInRobot = 0;
 
-                            xy = advacnePathFinder(robotX, robotY, currentItem);
-                            robotX = xy[0, 0];
-                            robotY = xy[0, 1];
-                            flag = warehouse.mapRelease();
+                            Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items left in List: {items.Count}");
+                            itemsInRobot = 0;
+                            if (i == listsize - 1)
+                            {
+                                Console.WriteLine("Robot ID: " + RobotID.ToString() + $" is heading home! ");
+                                xy = advacnePathFinder(robotX, robotY, new int[,] { { 0, 0 } });
+                                robotX = xy[0, 0];
+                                robotY = xy[0, 1];
+                                Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives home (location: {robotX}, {robotY})");
+                                break;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
 
                     }
-
+                    break;
 
                 }
+
             }
         }
 
@@ -128,15 +117,19 @@ namespace Amazoom.Motion
 
             while (true)
             {
-                if (robotY == warehouse.mapY && flag == true)
-                    flag = warehouse.mapRealTimeInfo(robotX, robotY, RobotID);
-
+                //Thread.Sleep(100);
                 if (robotX < targetLocation[0, 0])
                 {
-                    if (robotY == 0 || robotY == warehouse.mapY)
+                    if (robotY == 0 || robotY == warehouse.mapY - 2)
                         robotX += 1;
 
-                    else if (robotY < 1.0 / 2.0 * warehouse.mapY && targetLocation[0, 0] < 1.0 / 2.0 * warehouse.mapY)
+                    else if (robotY < 1.0 / 2.0 * (warehouse.mapY - 2) && targetLocation[0, 0] < 1.0 / 2.0 * (warehouse.mapY - 2))
+                        robotY--;
+                    else if (robotY > warehouse.mapY - 2 && robotX > columnMax)
+                        robotX--;
+                    else if (robotY > warehouse.mapY - 2 && robotX < columnMax)
+                        robotX++;
+                    else if (robotY > warehouse.mapY - 2)
                         robotY--;
                     else
                         robotY++;
@@ -144,11 +137,17 @@ namespace Amazoom.Motion
                 }
                 else if (robotX > targetLocation[0, 0])
                 {
-                    if (robotY == 0 || robotY == warehouse.mapY)
+                    if (robotY == 0 || robotY == (warehouse.mapY - 2))
                         robotX -= 1;
                     //else if (robotY == 0 || robotY == warehouse.mapY && robotX > targetLocation[0, 0])
                     //    robotX -= 1;
-                    else if (robotY < 1.0 / 2.0 * warehouse.mapY && targetLocation[0, 0] < 1.0 / 2.0 * warehouse.mapY)
+                    else if (robotY < 1.0 / 2.0 * (warehouse.mapY - 2) && targetLocation[0, 0] < 1.0 / 2.0 * (warehouse.mapY - 2))
+                        robotY--;
+                    else if (robotY > warehouse.mapY - 2 && robotX > columnMax)
+                        robotX--;
+                    else if (robotY > warehouse.mapY - 2 && robotX < columnMax)
+                        robotX++;
+                    else if (robotY > warehouse.mapY - 2)
                         robotY--;
                     else
                         robotY++;
@@ -164,10 +163,24 @@ namespace Amazoom.Motion
                     robotY -= 1;
 
                 }
+
+                //critical region check
+
+                criticalCheckFlag = warehouse.criticalRegionCheck(robotX, robotY);
+                if (criticalCheckFlag == true)
+                {
+                    if (flag == true)
+                        flag = warehouse.mapRealTimeInfo(robotX, robotY, RobotID);
+                }
+                else { };
+
                 Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
+                if (robotY != warehouse.mapY - 1 && flag == false)
+                {
+                    flag = warehouse.mapRelease(RobotID);
+                }
                 if (robotX == targetLocation[0, 0] && robotY == targetLocation[0, 1])
                     break;
-
             }
             xy[0, 0] = robotX;
             xy[0, 1] = robotY;
@@ -176,4 +189,6 @@ namespace Amazoom.Motion
 
 
     }
+
+
 }

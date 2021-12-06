@@ -28,11 +28,11 @@ namespace Amazoom.Motion
         public bool mapRealTimeInfo(int locationX, int locationY, int botID)
         {
 
-            if (locationY == mapY)
+            if (locationY == mapY - 1)
             {
-                Console.WriteLine($"Robot ID: {botID} is waiting");
+                Console.WriteLine($"\nRobot ID: {botID} is waiting");
                 semaphoreSlim.Wait();
-                Console.WriteLine($"Robot ID: {botID} enters row 6");
+                Console.WriteLine($"\nRobot ID: {botID} enters shared rows\n");
                 flag = false;
             }
             else
@@ -44,10 +44,24 @@ namespace Amazoom.Motion
         //{
         //    semaphoreSlim.Wait();
         //}
-        public bool mapRelease()
+        public bool mapRelease(int botID)
         {
             semaphoreSlim.Release();
+            Console.WriteLine($"\nRobot ID: {botID} left shared rows");
             return flag = true;
+        }
+
+        public bool criticalRegionCheck(int locationX, int locationY)
+        {
+            bool flag;
+            if (locationY == 0 || locationY == mapY - 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

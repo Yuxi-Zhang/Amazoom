@@ -10,7 +10,7 @@ namespace Amazoom.Item
 
 
 
-        public volatile static List<inventory> storage = new List<inventory>();
+        //  public volatile static List<inventory> maintest.storage = new List<inventory>();
         //public volatile static int[,] itempos = new int[ 1, 1];  
 
         public static List<int[,]> sort()
@@ -50,32 +50,82 @@ namespace Amazoom.Item
 
         public static int[,] findpos(goods theitem)
         {
-
-
             int[,] position = new int[1, 2];
+            int index = -1;
+            for (int i = 0; i < maintest.storage.Count; i++)
+            {
+
+                if (maintest.storage[i].item == theitem)
+                {
+
+                    index = i;
+
+                }
+            }
+            if (index == -1)
+            {
+                position[0, 0] = -1;
+                position[0, 1] = -1;
+                return position;
+
+            }
+
+            if (index >= 0)
+            {
+                for (int check = 0; check < maintest.storage[index].specificnum.Count; check++)
+                {
+                    if (maintest.storage[index].specificnum[check] <= 0)
+                    {
+                        maintest.storage[index].specificnum.RemoveAt(check);
+                        maintest.storage[index].posx.RemoveAt(check);
+                        maintest.storage[index].posy.RemoveAt(check);
+                        check--;
+                    }
+                }
+            }
+
             // int[,] itempos = new int[1, 1];
 
 
-            for (int i = 0; i < storage.Count; i++)
+            for (int j = 0; j < maintest.storage.Count; j++)
             {
 
 
 
-                if (storage[i].item == theitem)
+                if (maintest.storage[j].item == theitem)
                 {
-                    // for (int j = 0; j < storage[i].posx.Count; j++)
+                    // for (int j = 0; j < maintest.storage[i].posx.Count; j++)
 
                     //      int num = 0;
 
-                    //  py = storage[i].posy[j];
-                    // px = storage[i].posx[j];
-                    // itempos.SetValue(storage[i].posx[j], storage[i].posy[j]);
+                    //  py = maintest.storage[i].posy[j];
+                    // px = maintest.storage[i].posx[j];
+                    // itempos.SetValue(maintest.storage[i].posx[j], maintest.storage[i].posy[j]);
+                    // for(int t = maintest.storage[i].posx.Count-1; t <0 ; t--) {
 
-                    position[0, 0] = storage[i].posx[0];
-                    position[0, 1] = storage[i].posy[0];
-                    //position.SetValue(storage[i].posx[0], storage[i].posy[0]);
+                    // if (maintest.storage[i].specificnum[t] > 0) { 
+
+                    if (maintest.storage[j].posx.Count > 0)
+                    {
+                        position[0, 0] = maintest.storage[j].posx[0];
+                        position[0, 1] = maintest.storage[j].posy[0];
+                    }
+                    else
+                    {
+                        position[0, 0] = -1;
+                        position[0, 1] = -1;
+                        maintest.storage.RemoveAt(j);
+                        //remove the item since it is not in the inventory at any position
+
+                    }
+
+                    //  }
+                    //}
+
+                    //position.SetValue(maintest.storage[i].posx[0], maintest.storage[i].posy[0]);
 
                 }
+
 
 
             }
@@ -96,13 +146,49 @@ namespace Amazoom.Item
             int index = -1;
             int indexpos = -1;
 
+            for (int i = 0; i < maintest.storage.Count; i++)
+            {
+
+                if (maintest.storage[i].item == theitem)
+                {
+
+                    index = i;
+
+                }
+            }
+            if (index >= 0)
+            {
+                for (int check = 0; check < maintest.storage[index].specificnum.Count; check++)
+                {
+                    if (maintest.storage[index].specificnum[check] <= 0)
+                    {
+                        maintest.storage[index].specificnum.RemoveAt(check);
+                        maintest.storage[index].posx.RemoveAt(check);
+                        maintest.storage[index].posy.RemoveAt(check);
+                        check--;
+                    }
+                }
+
+                if (maintest.storage[index].posx.Count <= 0)
+                {
+
+                }
+                else
+                {
+
+                    maintest.storage.RemoveAt(index);
+
+                    //remove the item since it is not in the inventory at any position
+
+                }
+            }
             //the position and number of the item needed must be specified.
             //if not enough items are at that spot or the item is not at that spot, return the number of items that are further needed.
 
-            for (int i = 0; i < storage.Count; i++)
+            for (int i = 0; i < maintest.storage.Count; i++)
             {
 
-                if (storage[i].item == theitem)
+                if (maintest.storage[i].item == theitem)
                 {
 
                     index = i;
@@ -117,70 +203,53 @@ namespace Amazoom.Item
             }
             else
             {
-                if (storage[index].posx.Contains(needx) && storage[index].posx.Contains(needy))
-                {//warning: posx and posy both contains does not means it contains the specific point.
-                 // i.e. (2,3) and (3,4) does not imply it contains (2,4)
-                    for (int j = 0; j < storage.Count; j++)
+                //warning: posx and posy both contains does not means it contains the specific point.
+                // i.e. (2,3) and (3,4) does not imply it contains (2,4)
+                for (int j = 0; j < maintest.storage.Count; j++)
+                {
+
+                    if (maintest.storage[index].posx[j] == needx && maintest.storage[index].posy[j] == needy)
                     {
+                        indexpos = j;
+                    }
+                }
+                //note: x and y must match at the same time
+                if (indexpos == -1)
+                {
+                    //item exist but the position is different than command location
 
-                        if (storage[index].posx[j] == needx && storage[index].posy[j] == needy)
-                        {
-                            indexpos = j;
-                            //note: x and y must match at the same time
-                            if (storage[index].specificnum[j] >= numneed)
-                            {
-                                storage[index].specificnum[j] -= numneed;
+                    return numneed;
 
-                                if (storage[index].specificnum[j] == 0)
-                                {
+                }
+                else
+                {
 
-
-                                    storage[index].posx.Remove(storage[index].specificnum[j]);
-
-                                    storage[index].posy.Remove(storage[index].specificnum[j]);
-
-                                    storage[index].specificnum.Remove(storage[index].specificnum[j]);
-
-                                }
-                            }
-                            else
-                            {
-                                int diff = numneed - storage[index].specificnum[j];
-                                storage[index].specificnum[j] = 0;
-
-
-                                if (storage[index].specificnum[j] == 0)
-                                {
-
-
-                                    storage[index].posx.Remove(storage[index].specificnum[j]);
-
-                                    storage[index].posy.Remove(storage[index].specificnum[j]);
-
-                                    storage[index].specificnum.Remove(storage[index].specificnum[j]);
-
-
-
-
-                                }
-
-
-
-
-
-                                return diff;
-                            }
-
-                        }
-
-
+                    if (maintest.storage[index].specificnum[indexpos] > numneed)
+                    {
+                        maintest.storage[index].specificnum[indexpos] -= numneed;
+                        return 0;
 
                     }
-                    if (indexpos == -1)
+                    else
                     {
-                        //item exist but the position is different than command location
+                        int diff = numneed - maintest.storage[index].specificnum[indexpos];
 
-                        return numneed;
+
+                        moreneed = diff;
+
+
+
+                        maintest.storage[index].posx.RemoveAt(indexpos);
+
+                        maintest.storage[index].posy.RemoveAt(indexpos);
+
+                        maintest.storage[index].specificnum.RemoveAt(indexpos);
+
+
+
+
+
+                        return diff;
 
                     }
 
@@ -190,7 +259,11 @@ namespace Amazoom.Item
 
 
 
-                return moreneed;
+
+
+                //  return numneed;
+
+
             }
 
         }
@@ -208,14 +281,14 @@ namespace Amazoom.Item
             newposy.Add(addy);
 
 
-            for (int i = 0; i < storage.Count; i++)
+            for (int i = 0; i < maintest.storage.Count; i++)
             {
 
-                if (storage[i].item == theitem)
+                if (maintest.storage[i].item == theitem)
                 {
 
                     index = i;
-                    storage[i].totalinv += numadd;
+                    maintest.storage[i].totalinv += numadd;
 
                 }
             }
@@ -225,7 +298,7 @@ namespace Amazoom.Item
 
                 inventory newstuff = new inventory(theitem, numadd, newposx, newposy, newspecificnum);
 
-                storage.Add(newstuff);
+                maintest.storage.Add(newstuff);
                 //add this new stuff to it
 
             }
@@ -234,17 +307,17 @@ namespace Amazoom.Item
              //in case it is located at multiple shelf due to weight capacity
 
 
-                if (storage[index].posx.Contains(addx) && storage[index].posx.Contains(addy))
+                if (maintest.storage[index].posx.Contains(addx) && maintest.storage[index].posx.Contains(addy))
                 {//warning: posx and posy both contains does not means it contains the specific point.
                  // i.e. (2,3) and (3,4) does not imply it contains (2,4)
-                    for (int j = 0; j < storage.Count; j++)
+                    for (int j = 0; j < maintest.storage.Count; j++)
                     {
 
-                        if (storage[index].posx[j] == addx && storage[index].posy[j] == addy)
+                        if (maintest.storage[index].posx[j] == addx && maintest.storage[index].posy[j] == addy)
                         {
                             indexpos = j;
                             //note: x and y must match at the same time
-                            storage[index].specificnum[j] += numadd;
+                            maintest.storage[index].specificnum[j] += numadd;
 
                         }
 
@@ -254,9 +327,9 @@ namespace Amazoom.Item
                     if (indexpos == -1)
                     {
                         //item exist but the position is different than current location
-                        storage[index].posx.Add(addx);
-                        storage[index].posy.Add(addy);
-                        storage[index].specificnum.Add(numadd);
+                        maintest.storage[index].posx.Add(addx);
+                        maintest.storage[index].posy.Add(addy);
+                        maintest.storage[index].specificnum.Add(numadd);
 
 
                     }
@@ -307,7 +380,6 @@ namespace Amazoom.Item
 
     }
 }
-
 
 
 
