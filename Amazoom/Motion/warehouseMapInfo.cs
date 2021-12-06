@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
 namespace Amazoom.Motion
 {
-    class warehouseMapInfo
+    public class warehouseMapInfo
     {
         public string mapName;
         public int mapX;
@@ -13,6 +13,8 @@ namespace Amazoom.Motion
         public int[,] docksLocation;
         public int[,] shelvesLocation; //size of 2, first one represent the left top corner, the second one represents bottom right corner
         Mutex mut = new Mutex();
+        public SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+        bool flag;
 
         public warehouseMapInfo(string mapName, int mapX, int mapY, int[,] dockslocation, int[,] shelvesLocation)
         {
@@ -23,19 +25,29 @@ namespace Amazoom.Motion
             this.shelvesLocation = shelvesLocation;
         }
 
-        public bool mapRealTimeInfo(int locationX, int locationY)
+        public bool mapRealTimeInfo(int locationX, int locationY, int botID)
         {
-            bool flag;
-            mut.WaitOne();
-            if (locationX == mapX)
+
+            if (locationY == mapY)
             {
-                return flag = true;
+                Console.WriteLine($"Robot ID: {botID} is waiting");
+                semaphoreSlim.Wait();
+                Console.WriteLine($"Robot ID: {botID} enters row 6");
+                flag = false;
             }
             else
-            {
-                return flag = false;
-            }
-            mut.Close();
+                flag = true;
+
+            return flag;
+        }
+        //public void mapWait()
+        //{
+        //    semaphoreSlim.Wait();
+        //}
+        public bool mapRelease()
+        {
+            semaphoreSlim.Release();
+            return flag = true;
         }
     }
 }
