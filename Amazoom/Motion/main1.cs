@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,16 +47,16 @@ namespace Amazoom.Motion
 
 
             // create a list for robot item lists
-            /*for (i = 0; i < robotNumber; i++)
+            *//*for (i = 0; i < robotNumber; i++)
             {
                 List<int[,]> itemList = new List<int[,]>();
                 itemListMaster.Add(itemList);
-            }*/
+            }*//*
 
             // could do a test here
             for (i = 0; i < robotNumber; i++)
             {
-                /*if (1 <= items[i, 0] && items[i, 0] <= 2)
+                *//*if (1 <= items[i, 0] && items[i, 0] <= 2)
                 {
                     itemListMaster[0].Add(new int[,] { { items[i, 0], items[i, 1] } });
                 }
@@ -71,7 +71,7 @@ namespace Amazoom.Motion
                 else if (7 <= items[i, 0] && items[i, 0] <= 8)
                 {
                     itemListMaster[3].Add(new int[,] { { items[i, 0], items[i, 1] } });
-                }*/
+                }*//*
 
                 // Test 1, 随机
                 itemListMaster[0].Add(new int[,] { { 0, 1 }, { 0, 5 }, { 1, 1 }, { 1, 5 } });
@@ -123,3 +123,4 @@ namespace Amazoom.Motion
         }
     }
 }
+*/

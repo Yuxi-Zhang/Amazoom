@@ -30,10 +30,10 @@ namespace Amazoom.Item
         public static List<int[,]> poslist(List<goods> total)
         {
             List<int[,]> fulllist = new List<int[,]>();
-            int[,] itempos = new int[1, 1];
+            int[,] itempos = new int[1, 2];
 
 
-            for(int i=0; i<total.Count; i++)
+            for (int i = 0; i < total.Count; i++)
             {
 
                 itempos = findpos(total[i]);
@@ -52,12 +52,14 @@ namespace Amazoom.Item
         {
 
 
-            int[,] position = new int[1,1];
-           // int[,] itempos = new int[1, 1];
+            int[,] position = new int[1, 2];
+            // int[,] itempos = new int[1, 1];
 
 
             for (int i = 0; i < storage.Count; i++)
             {
+
+
 
                 if (storage[i].item == theitem)
                 {
@@ -68,7 +70,11 @@ namespace Amazoom.Item
                     //  py = storage[i].posy[j];
                     // px = storage[i].posx[j];
                     // itempos.SetValue(storage[i].posx[j], storage[i].posy[j]);
-                    position.SetValue(storage[i].posx[0], storage[i].posy[0]);
+
+                    position[0, 0] = storage[i].posx[0];
+                    position[0, 1] = storage[i].posy[0];
+                    //position.SetValue(storage[i].posx[0], storage[i].posy[0]);
+
                 }
 
 
@@ -80,6 +86,7 @@ namespace Amazoom.Item
             return position;
 
         }
+
 
         //everytime new good is add just add in this inventory list;
         public static int getinventory(goods theitem, int numneed, int needx, int needy)
@@ -123,11 +130,44 @@ namespace Amazoom.Item
                             if (storage[index].specificnum[j] >= numneed)
                             {
                                 storage[index].specificnum[j] -= numneed;
+
+                                if (storage[index].specificnum[j] == 0)
+                                {
+
+
+                                    storage[index].posx.Remove(storage[index].specificnum[j]);
+
+                                    storage[index].posy.Remove(storage[index].specificnum[j]);
+
+                                    storage[index].specificnum.Remove(storage[index].specificnum[j]);
+
+                                }
                             }
                             else
                             {
                                 int diff = numneed - storage[index].specificnum[j];
                                 storage[index].specificnum[j] = 0;
+
+
+                                if (storage[index].specificnum[j] == 0)
+                                {
+
+
+                                    storage[index].posx.Remove(storage[index].specificnum[j]);
+
+                                    storage[index].posy.Remove(storage[index].specificnum[j]);
+
+                                    storage[index].specificnum.Remove(storage[index].specificnum[j]);
+
+
+
+
+                                }
+
+
+
+
+
                                 return diff;
                             }
 
@@ -145,6 +185,8 @@ namespace Amazoom.Item
                     }
 
                 }
+
+
 
 
 
@@ -265,3 +307,8 @@ namespace Amazoom.Item
 
     }
 }
+
+
+
+
+

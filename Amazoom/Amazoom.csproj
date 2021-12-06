@@ -49,12 +49,13 @@
     <Compile Include="Item\dock.cs" />
     <Compile Include="Item\goods.cs" />
     <Compile Include="Item\inventory.cs" />
+    <Compile Include="Item\yuxizhang.cs" />
     <Compile Include="Motion\main1.cs" />
     <Compile Include="Item\order.cs" />
     <Compile Include="Item\totalList.cs" />
     <Compile Include="Item\Truck.cs" />
-    <Compile Include="Motion\robot.cs" />
     <Compile Include="Motion\robotHelperFunction.cs" />
+    <Compile Include="Motion\robotics.cs" />
     <Compile Include="Motion\warehouseMapInfo.cs" />
     <Compile Include="Winform\Alert.cs">
       <SubType>Form</SubType>
