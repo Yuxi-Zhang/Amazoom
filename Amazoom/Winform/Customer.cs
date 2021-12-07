@@ -30,25 +30,23 @@ namespace customer
         List<int[,]> fromCustomer = new List<int[,]>();
         
         int i = 0;
-        public AO(List<goods> list)
+        public AO(List<goods> stocks)
         {
             InitializeComponent();
-            goods = list;
-            PopulateDataGridView(list);
-            
-
+            goods = stocks;
+            PopulateDataGridView(stocks);
         }
         
         private void PopulateDataGridView(List<goods> stocks)
         {
-            /*string[] row0 = { "A", "2" };
-            string[] row1 = { "B", "5" };
-            string[] row2 = { "C", "2" };
-            goods.Add(row0);
-            goods.Add(row1);
-            goods.Add(row2);*/
+            //string[] row0 = { "A", "2" };
+            //string[] row1 = { "B", "5" };
+            //string[] row2 = { "C", "2" };
+            //goods.Add(row0);
+            //goods.Add(row1);
+            //goods.Add(row2);
 
-            for (i = 0; i < goods.Count; i++)
+            for (i = 0; i < stocks.Count; i++)
             {
 
                 string s1 = stocks[i].goodsname;
@@ -86,9 +84,8 @@ namespace customer
 
     private void button1_Click(object sender, EventArgs e)
     {
-
         string[] row1 = { "", "" };
-            int i = 0;
+        int i = 0;
         while (dataGridViewShoppingList.RowCount != 1)
         {
             row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
@@ -115,16 +112,18 @@ namespace customer
         {
             int x = 0;
             int y = 0;
+
             //shoppingList 
             while (shoppingList.Count != 0)
             {
                 for (int i = 0; i < goods.Count; i++)
                 {
-                    if(goods[i].goodsname == shoppingList[i][0])
+                    if(goods[i].goodsname == shoppingList[0][0])
                     {
                         x = goods[i].posX;
                         y = goods[i].posY;
                         fromCustomer.Add(new int[,] { { x, y } });
+                        shoppingList.RemoveAt(0);
                     }
                 }
             }
