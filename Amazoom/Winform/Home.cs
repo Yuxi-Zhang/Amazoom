@@ -15,6 +15,7 @@ namespace Amazoom
     public partial class Home : Form
     {
         public List<goods> toCustomer = new List<goods>();
+        public List<goods> stockList = new List<goods>();
         public List<goods> toCustomerZYX = new List<goods>();
         public int[] settings = new int[3];
         //public all stock;
@@ -58,8 +59,8 @@ namespace Amazoom
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
-            //var manager = new Manager(toCustomer);
-            //manager.Show();
+            var manager = new ManagerNew(stockList);
+            manager.Show();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -74,6 +75,7 @@ namespace Amazoom
             settings[1] = mapY;
             settings[2] = numRobot;
             toCustomerZYX = stocks.addStocks(total, mapX, mapY);
+            stockList = toCustomerZYX;
             //int XY = 10;
         }
     }

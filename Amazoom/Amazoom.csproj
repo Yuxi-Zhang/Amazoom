@@ -97,6 +97,12 @@
     <Compile Include="Winform\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Winform\ManagerNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Winform\ManagerNew.Designer.cs">
+      <DependentUpon>ManagerNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Winform\managerOverall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Winform\ManagerNew.resx">
+      <DependentUpon>ManagerNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\managerOverall.resx">
       <DependentUpon>managerOverall.cs</DependentUpon>
