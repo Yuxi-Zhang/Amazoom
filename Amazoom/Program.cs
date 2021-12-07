@@ -17,35 +17,19 @@ namespace Amazoom
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
 
-        public void run (List<string[]> requst, int action)
+        public void run (List<int[,]> requst, int action)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Home());
-
-
-            // Intialize new items 
-            goods item1 = new goods(100, "apple", 1, null, null, 1, 3);
-            goods item2 = new goods(100, "pear", 1, null, null, 1, 4);
-            goods item3 = new goods(100, "pineapple", 1, null, null, 2, 2);
-            goods item4 = new goods(100, "pipe", 1, null, null, 3, 4);
-            goods item5 = new goods(100, "sensor", 1, null, null, 2, 5);
-
-            List<string[]> toCustomer = new List<string[]>();
-
-            toCustomer.Add(new string[] { item1.goodsname, item1.num.ToString()});
-            toCustomer.Add(new string[] { item2.goodsname, item2.num.ToString() });
-            toCustomer.Add(new string[] { item3.goodsname, item3.num.ToString() });
-            toCustomer.Add(new string[] { item4.goodsname, item4.num.ToString() });
-            toCustomer.Add(new string[] { item5.goodsname, item5.num.ToString() });
-
-
+            
             int robotNumber = 5;
             int i = 0;
             warehouseMapInfo warehouse1 =
             new warehouseMapInfo("warehouse1", 8, 8, new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
             //(0-7)(0-6)
 
+            List<int[,]> itemList = new List<int[,]>();
             List<robot> robotList = new List<robot>();
             var itemListMaster = new List<List<int[,]>>();
 
@@ -66,12 +50,27 @@ namespace Amazoom
             }
 
             for (i = 0; i < robotNumber; i++)
-            {
-                List<int[,]> itemList = new List<int[,]>();
+            { 
                 itemListMaster.Add(itemList);
             }
 
-            
+            //sort list and assign them to different small list
+            while(requst.Count != 0)
+            {
+                for (i = 0; i < robotNumber; i++) {
+                    if (requst[0][0,0] >= robotList[i].columnMin && requst[0][0, 0] <= robotList[i].columnMax)
+                    {
+                        itemListMaster[i].Add((requst[0]));
+                        requst.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("the item is not validate");
+                    }
+                           
+                }
+
+            }
 
             List<Thread> threadList = new List<Thread>();
             //spin multi-threading
@@ -80,13 +79,12 @@ namespace Amazoom
                 int temp = i;
                 Thread thread = new Thread(() =>
                 {
-                    robotList[temp].findRoute(itemListMaster[temp], 1);
+                    robotList[temp].findRoute(itemListMaster[temp], action);
 
                 });
                 thread.Start();
                 threadList.Add(thread);
             }
-
 
             for (i = 0; i < robotNumber; i++)
             {
