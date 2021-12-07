@@ -17,7 +17,7 @@ namespace Amazoom
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
 
-        public void run (List<int[,]> requst, int action)
+        public void run (List<int[,]> requst, int action, int[] map)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -26,7 +26,7 @@ namespace Amazoom
             int robotNumber = 5;
             int i = 0;
             warehouseMapInfo warehouse1 =
-            new warehouseMapInfo("warehouse1", 8, 8, new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
+            new warehouseMapInfo("warehouse1", map[0], map[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
             //(0-7)(0-6)
 
             List<int[,]> itemList = new List<int[,]>();

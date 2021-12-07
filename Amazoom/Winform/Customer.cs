@@ -28,12 +28,14 @@ namespace customer
         List<goods> goods = new List<goods>();
         List<string[]> shoppingList = new List<string[]>();
         List<int[,]> fromCustomer = new List<int[,]>();
-        
+        int[] mapXY;
+
         int i = 0;
-        public AO(List<goods> stocks)
+        public AO(List<goods> stocks, int[] map)
         {
             InitializeComponent();
             goods = stocks;
+            mapXY = map;
             PopulateDataGridView(stocks);
         }
         
@@ -134,14 +136,14 @@ namespace customer
             }
             
 
-            var manager = new Manager(fromCustomer);
+            var manager = new Manager(fromCustomer, mapXY);
 
             manager.Show();
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
-            var newCustomer = new customer.AO(goods);
+            var newCustomer = new customer.AO(goods, mapXY);
             newCustomer.Show();
         }
     }

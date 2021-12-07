@@ -16,6 +16,7 @@ namespace Amazoom
     {
         public List<goods> toCustomer = new List<goods>();
         public List<goods> toCustomerZYX = new List<goods>();
+        public int[] map = new int[2];
         //public all stock;
 
 
@@ -36,7 +37,7 @@ namespace Amazoom
             all stocks = new all();
             stocks.Initialize();
             //var customer = new customer.AO(stocks.getAll());
-            var customer = new customer.AO(toCustomerZYX);
+            var customer = new customer.AO(toCustomerZYX, map);
             customer.Show();
         }
 
@@ -68,6 +69,8 @@ namespace Amazoom
             int mapX = Convert.ToInt32(textBoxX.Text);
             int mapY = Convert.ToInt32(textBoxY.Text);
 
+            map[0] = mapX;
+            map[1] = mapY;
             toCustomerZYX = stocks.addStocks(total, mapX, mapY);
             //int XY = 10;
         }
