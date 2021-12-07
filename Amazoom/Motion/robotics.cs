@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace Amazoom.Motion
+namespace projectRobot
 {
     public class robot
     {
@@ -36,81 +36,141 @@ namespace Amazoom.Motion
             this.RobotID = RobotID;
         }
 
-        public void findRoute(List<int[,]> items)
+        public void findRoute(List<int[,]> items, int action)   //action =1 pick up items. action = 2, restock
         {
             List<int> route = new List<int>();
             robotX = 0;
             robotY = 0;
             int listsize = items.Count;
             int[,] xy;
+            int[,] currentItem;
 
             Console.WriteLine("Robot ID: " + RobotID.ToString() + " is working");
-
-            for (i = 0; i < listsize; i++)
+            if (action == 1)
             {
-                int[,] currentItem = items[0];
-                Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
-                //robot find items before full(with optimized path finder)
-                while (true)
+                for (i = 0; i < listsize; i++)
                 {
-
-                    xy = advacnePathFinder(robotX, robotY, currentItem);
-                    robotX = xy[0, 0];
-                    robotY = xy[0, 1];
-
-                    if (robotX == currentItem[0, 0] && robotY == currentItem[0, 1])
+                    currentItem = items[0];
+                    Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
+                    //robot find items before full(with optimized path finder)
+                    while (true)
                     {
-                        if (items.Count > 0)
-                        {
-                            items.RemoveAt(0);
-                            Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
-                        }
-                        itemsInRobot++;
-                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" picks up item {i} (location: {robotX}, {robotY}) and items in robot: {itemsInRobot}");
-                        if ((itemsInRobot == maxCapacity || i == listsize - 1) == false)
-                            break;
-                        else { };
-                    }
 
-                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
-                    //when reach its maxcapacity
-                    while (itemsInRobot == maxCapacity || i == listsize - 1)
-                    {
-                        Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" is heading to dock");
-                        xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
+                        xy = advacnePathFinder(robotX, robotY, currentItem);
                         robotX = xy[0, 0];
                         robotY = xy[0, 1];
 
-                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
-
-                        if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
+                        if (robotX == currentItem[0, 0] && robotY == currentItem[0, 1])
                         {
-
-                            Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items left in List: {items.Count}");
-                            itemsInRobot = 0;
-                            if (i == listsize - 1)
+                            if (items.Count > 0)
                             {
-                                Console.WriteLine("Robot ID: " + RobotID.ToString() + $" is heading home! ");
-                                xy = advacnePathFinder(robotX, robotY, new int[,] { { 0, 0 } });
-                                robotX = xy[0, 0];
-                                robotY = xy[0, 1];
-                                Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives home (location: {robotX}, {robotY})");
-                                break;
+                                items.RemoveAt(0);
+                                Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
                             }
-                            else
-                            {
+                            itemsInRobot++;
+                            Console.WriteLine("Robot ID: " + RobotID.ToString() + $" picks up item {i} (location: {robotX}, {robotY}) and items in robot: {itemsInRobot}");
+                            if ((itemsInRobot == maxCapacity || i == listsize - 1) == false)
                                 break;
-                            }
+                            else { };
                         }
 
+                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
+                        //when reach its maxcapacity
+                        while (itemsInRobot == maxCapacity || i == listsize - 1)
+                        {
+                            Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" is heading to dock");
+                            xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
+                            robotX = xy[0, 0];
+                            robotY = xy[0, 1];
+
+                            Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
+
+                            if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
+                            {
+
+                                Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items left in List: {items.Count}");
+                                itemsInRobot = 0;
+                                if (i == listsize - 1)
+                                {
+                                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" is heading home! ");
+                                    xy = advacnePathFinder(robotX, robotY, new int[,] { { 0, 0 } });
+                                    robotX = xy[0, 0];
+                                    robotY = xy[0, 1];
+                                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives home (location: {robotX}, {robotY})");
+                                    break;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+
+                        }
+                        break;
+
                     }
-                    break;
+
+                }
+            }
+            else if (action == 2)
+            {
+                //robot find items before full(with optimized path finder)
+                while (items.Count != 0)
+                {
+
+                    Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" is heading to dock for restocking");
+                    xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
+                    robotX = xy[0, 0];
+                    robotY = xy[0, 1];
+
+                    if (maxCapacity > listsize)
+                    {
+                        itemsInRobot = listsize % maxCapacity;
+                    }
+                    else
+                    {
+                        itemsInRobot = maxCapacity;
+                    }
+                    Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" Items in List: {itemsInRobot}");
+
+                    while (itemsInRobot != 0)
+                    {
+                        currentItem = items[0];
+                        xy = advacnePathFinder(robotX, robotY, currentItem);
+                        robotX = xy[0, 0];
+                        robotY = xy[0, 1];
+
+                        if (robotX == currentItem[0, 0] && robotY == currentItem[0, 1])
+                        {
+
+                            if (itemsInRobot != 0)
+                            {
+                                items.RemoveAt(0);
+                                Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" Items in List: {items.Count}");
+                                itemsInRobot--;
+                                Console.WriteLine("Robot ID: " + RobotID.ToString() + $" drop item {i} (location: {robotX}, {robotY}) and items in robot: {itemsInRobot}");
+                            }
+                            else
+                                break;
+
+                        }
+                    }
+                    if (items.Count == 0)
+                    {
+                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" is heading home! ");
+                        xy = advacnePathFinder(robotX, robotY, new int[,] { { 0, 0 } });
+                        robotX = xy[0, 0];
+                        robotY = xy[0, 1];
+                        Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives home (location: {robotX}, {robotY})");
+                        break;
+                    }
 
                 }
 
+
+
             }
         }
-
         public int[,] advacnePathFinder(int robotX, int robotY, int[,] targetLocation)
         {
             int[,] xy = new int[,] { { 0, 0 } };
@@ -188,7 +248,8 @@ namespace Amazoom.Motion
         }
 
 
+
+
+
     }
-
-
 }
