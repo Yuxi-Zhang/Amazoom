@@ -247,9 +247,5 @@ namespace Amazoom.Motion
             return xy;
         }
 
-
-
-
-
     }
 }
