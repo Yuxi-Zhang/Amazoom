@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -341,11 +341,11 @@ namespace Amazoom.Item
         }
 
         //   public goods[] goodslist = new goods[5];
-        /*    static void Main(string[] args)
-            {
-                Console.WriteLine("Hello World!");
-            }
-        */
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+
 
 
         public void loading(int itemnum)
@@ -384,3 +384,4 @@ namespace Amazoom.Item
 
 
 
+*/

@@ -1,4 +1,5 @@
 ﻿using Amazoom.Motion;
+using Amazoom.Item;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -18,9 +19,25 @@ namespace Amazoom
 
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Home());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Home());
+
+
+            // Intialize new items 
+            goods item1 = new goods(1, "apple", 100, null, null, 1, 3);
+            goods item2 = new goods(1, "pear", 100, null, null, 1, 4);
+            goods item3 = new goods(1, "pineapple", 100, null, null, 2, 2);
+            goods item4 = new goods(1, "pipe", 100, null, null, 3, 4);
+            goods item5 = new goods(1, "sensor", 100, null, null, 2, 5);
+
+            List<int[,]> itemList2 = new List<int[,]>();
+            itemList2.Add(new int[,] { { item1.posX, item1.posY } });
+            itemList2.Add(new int[,] { { item2.posX, item2.posY } });
+            itemList2.Add(new int[,] { { item3.posX, item3.posY } });
+            itemList2.Add(new int[,] { { item4.posX, item4.posY } });
+            itemList2.Add(new int[,] { { item5.posX, item5.posY } });
+
 
             int robotNumber = 5;
             int i = 0;
@@ -52,6 +69,13 @@ namespace Amazoom
                 List<int[,]> itemList = new List<int[,]>();
                 itemListMaster.Add(itemList);
             }
+
+            for (i = 0; i < itemList2.Count; i++)
+            {
+                
+            }
+
+
 
 
             itemListMaster[0].Add(new int[,] { { 0, 5 } });

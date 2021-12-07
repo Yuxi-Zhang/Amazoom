@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amazoom.Winform;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +21,10 @@ namespace Amazoom
         private void customerBtn_Click(object sender, EventArgs e)
         {
             var customer = new customer1();
-            
+            var ao = new customer.AO();
 
             customer.Show();
+            ao.Show();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -34,6 +36,9 @@ namespace Amazoom
         {
             var admin = new managerOverall();
             admin.Show();
+
+            var test = new Manager();
+            test.Show();
 
         }
     }
