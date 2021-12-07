@@ -84,27 +84,24 @@ namespace customer
 
     private void button1_Click(object sender, EventArgs e)
     {
-        string[] row1 = { "", "" };
-        int i = 0;
+        //string[] row1 = { "", "" };
+        //int i = 0;
+        string name;
+        string num;
         while (dataGridViewShoppingList.RowCount != 1)
         {
-            row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
-            row1[1] = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
-            shoppingList.Add(row1);
+            //row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+            //row1[1] = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+            name = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+            num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+            shoppingList.Add(new string[] { name, num });
             dataGridViewShoppingList.Rows.RemoveAt(0);
         }
-
-    }
-
-    private void dataGridViewShoppingList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-
     }
 
         private void button2_Click(object sender, EventArgs e)
         {
             dataGridViewShoppingList.Rows.RemoveAt(dataGridViewShoppingList.SelectedRows[0].Index);
-
         }
 
         
@@ -118,12 +115,20 @@ namespace customer
             {
                 for (int i = 0; i < goods.Count; i++)
                 {
-                    if(goods[i].goodsname == shoppingList[0][0])
+                    string shopping = shoppingList[0][0];
+                    string goodsname = goods[i].goodsname;
+                    bool flag = (shopping == goodsname);
+                    if (goods[i].goodsname == shoppingList[0][0])
                     {
                         x = goods[i].posX;
                         y = goods[i].posY;
                         fromCustomer.Add(new int[,] { { x, y } });
                         shoppingList.RemoveAt(0);
+                        // important! remove完后shoppingList后，可能会继续遍历goods[i]导致out of range
+                        if (shoppingList.Count <= 0)
+                        {
+                            break;
+                        }
                     }
                 }
             }
@@ -132,6 +137,12 @@ namespace customer
             var manager = new Manager(fromCustomer);
 
             manager.Show();
+        }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            var newCustomer = new customer.AO(goods);
+            newCustomer.Show();
         }
     }
 }

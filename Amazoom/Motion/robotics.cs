@@ -50,6 +50,10 @@ namespace Amazoom.Motion
             {
                 for (i = 0; i < listsize; i++)
                 {
+                    if (items.Count <= 0)
+                    {
+                        break;
+                    }
                     currentItem = items[0];
                     Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" items in List: {items.Count}");
                     //robot find items before full(with optimized path finder)

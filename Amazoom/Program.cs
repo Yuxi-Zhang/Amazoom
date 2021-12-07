@@ -62,6 +62,10 @@ namespace Amazoom
                     {
                         itemListMaster[i].Add((requst[0]));
                         requst.RemoveAt(0);
+                        if (requst.Count <= 0)
+                        {
+                            break;
+                        }
                     }
                     else
                     {
