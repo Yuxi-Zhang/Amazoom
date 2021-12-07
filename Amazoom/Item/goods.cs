@@ -20,16 +20,16 @@ namespace Amazoom.Item
         public List<int> number = new List<int>(); //number ordered;
         public List<int> ordernum = new List<int>();
 
-        public goods(int num, string goodsname, int weight, List<int> number, List<int> ordernum, int posX, int posY)
+        public goods(int num, string goodsname, int posX, int posY)
         {
 
             this.num = num;
             this.goodsname = goodsname;
-            this.weight = weight;
+            //this.weight = weight;
             this.posX = posX;
             this.posY = posY;
-            this.number = number;// number to determine the order of online orders
-            this.ordernum = ordernum;
+            //this.number = number;// number to determine the order of online orders
+            //this.ordernum = ordernum;
 
         }
 

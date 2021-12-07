@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Item\all.cs" />
     <Compile Include="Item\dock.cs" />
     <Compile Include="Item\goods.cs" />
     <Compile Include="Item\inventory.cs" />
@@ -78,11 +79,11 @@
     <Compile Include="Winform\customer2.Designer.cs">
       <DependentUpon>customer2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Winform\Form1.cs">
+    <Compile Include="Winform\Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Winform\Form1.designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Winform\Customer.designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
     </Compile>
     <Compile Include="Winform\manager.cs">
       <SubType>Form</SubType>
@@ -131,8 +132,8 @@
     <EmbeddedResource Include="Winform\customer2.resx">
       <DependentUpon>customer2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Winform\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Winform\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\manager.resx">
       <DependentUpon>manager.cs</DependentUpon>

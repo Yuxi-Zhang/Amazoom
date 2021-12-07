@@ -25,11 +25,11 @@ namespace Amazoom
 
 
             // Intialize new items 
-            goods item1 = new goods(100, "apple", 1, null, null, 1, 3);
-            goods item2 = new goods(100, "pear", 1, null, null, 1, 4);
-            goods item3 = new goods(100, "pineapple", 1, null, null, 2, 2);
-            goods item4 = new goods(100, "pipe", 1, null, null, 3, 4);
-            goods item5 = new goods(100, "sensor", 1, null, null, 2, 5);
+            goods item1 = new goods(100, "apple", 1, 3);
+            goods item2 = new goods(100, "pear", 1, 4);
+            goods item3 = new goods(100, "pineapple", 2, 2);
+            goods item4 = new goods(100, "pipe", 3, 4);
+            goods item5 = new goods(100, "sensor", 2, 5);
 
             List<string[]> toCustomer = new List<string[]>();
 

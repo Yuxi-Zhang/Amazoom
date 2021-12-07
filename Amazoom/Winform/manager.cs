@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amazoom.Item;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Amazoom.Winform
 {
     public partial class Manager: Form
     {
-        public Manager(List<string[]> shoppinglist)
+        public Manager(List<int[,]> shoppinglist)
         {
             InitializeComponent();
             Program program = new Program();

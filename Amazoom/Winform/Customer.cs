@@ -1,4 +1,6 @@
-﻿using Amazoom.Winform;
+﻿using Amazoom;
+using Amazoom.Item;
+using Amazoom.Winform;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,20 +25,21 @@ namespace customer
 {
     public partial class AO : Form
     {
-        List<string[]> goods = new List<string[]>();
-
+        List<goods> goods = new List<goods>();
         List<string[]> shoppingList = new List<string[]>();
+        List<int[,]> fromCustomer = new List<int[,]>();
+        
         int i = 0;
-        public AO(List<string[]> list)
+        public AO(List<goods> list)
         {
             InitializeComponent();
             goods = list;
-            PopulateDataGridView(goods);
+            PopulateDataGridView(list);
             
 
         }
         
-        private void PopulateDataGridView(List<string[]> goods)
+        private void PopulateDataGridView(List<goods> stocks)
         {
             /*string[] row0 = { "A", "2" };
             string[] row1 = { "B", "5" };
@@ -45,17 +48,15 @@ namespace customer
             goods.Add(row1);
             goods.Add(row2);*/
 
-            for(i=0;i<goods.Count;i++)
-            dataGridView.Rows.Add(goods[i]);
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            for (i = 0; i < goods.Count; i++)
+            {
 
-        }
+                string s1 = stocks[i].goodsname;
+                string s2 = stocks[i].num.ToString();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                string[] row1 = { s1, s2 };
+                dataGridView.Rows.Add(row1);
+            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -109,9 +110,27 @@ namespace customer
 
         }
 
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var manager = new Manager(shoppingList);
+            int x = 0;
+            int y = 0;
+            //shoppingList 
+            while (shoppingList.Count != 0)
+            {
+                for (int i = 0; i < goods.Count; i++)
+                {
+                    if(goods[i].goodsname == shoppingList[i][0])
+                    {
+                        x = goods[i].posX;
+                        y = goods[i].posY;
+                        fromCustomer.Add(new int[,] { { x, y } });
+                    }
+                }
+            }
+            
+
+            var manager = new Manager(fromCustomer);
 
             manager.Show();
         }
