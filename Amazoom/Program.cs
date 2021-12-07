@@ -34,7 +34,7 @@ namespace Amazoom
             var itemListMaster = new List<List<int[,]>>();
 
             // create a list for robots
-            int column = warehouse1.mapX % robotNumber;
+            int column = warehouse1.mapX / robotNumber;
             for (i = 0; i < robotNumber; i++)
             {
                 if (i != robotNumber - 1)
@@ -62,10 +62,9 @@ namespace Amazoom
                     {
                         itemListMaster[i].Add((requst[0]));
                         requst.RemoveAt(0);
-                        if (requst.Count <= 0)
-                        {
+                        
                             break;
-                        }
+
                     }
                     else
                     {
