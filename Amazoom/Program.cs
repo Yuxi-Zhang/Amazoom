@@ -17,7 +17,7 @@ namespace Amazoom
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
 
-        static void Main()
+        public void run (List<string[]> requst, int action)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
@@ -25,18 +25,19 @@ namespace Amazoom
 
 
             // Intialize new items 
-            goods item1 = new goods(1, "apple", 100, null, null, 1, 3);
-            goods item2 = new goods(1, "pear", 100, null, null, 1, 4);
-            goods item3 = new goods(1, "pineapple", 100, null, null, 2, 2);
-            goods item4 = new goods(1, "pipe", 100, null, null, 3, 4);
-            goods item5 = new goods(1, "sensor", 100, null, null, 2, 5);
+            goods item1 = new goods(100, "apple", 1, null, null, 1, 3);
+            goods item2 = new goods(100, "pear", 1, null, null, 1, 4);
+            goods item3 = new goods(100, "pineapple", 1, null, null, 2, 2);
+            goods item4 = new goods(100, "pipe", 1, null, null, 3, 4);
+            goods item5 = new goods(100, "sensor", 1, null, null, 2, 5);
 
-            List<int[,]> itemList2 = new List<int[,]>();
-            itemList2.Add(new int[,] { { item1.posX, item1.posY } });
-            itemList2.Add(new int[,] { { item2.posX, item2.posY } });
-            itemList2.Add(new int[,] { { item3.posX, item3.posY } });
-            itemList2.Add(new int[,] { { item4.posX, item4.posY } });
-            itemList2.Add(new int[,] { { item5.posX, item5.posY } });
+            List<string[]> toCustomer = new List<string[]>();
+
+            toCustomer.Add(new string[] { item1.goodsname, item1.num.ToString()});
+            toCustomer.Add(new string[] { item2.goodsname, item2.num.ToString() });
+            toCustomer.Add(new string[] { item3.goodsname, item3.num.ToString() });
+            toCustomer.Add(new string[] { item4.goodsname, item4.num.ToString() });
+            toCustomer.Add(new string[] { item5.goodsname, item5.num.ToString() });
 
 
             int robotNumber = 5;
@@ -70,85 +71,7 @@ namespace Amazoom
                 itemListMaster.Add(itemList);
             }
 
-            for (i = 0; i < itemList2.Count; i++)
-            {
-                
-            }
-
-
-
-
-            itemListMaster[0].Add(new int[,] { { 0, 5 } });
-            itemListMaster[0].Add(new int[,] { { 1, 5 } });
-            itemListMaster[0].Add(new int[,] { { 1, 2 } });
-            itemListMaster[0].Add(new int[,] { { 1, 5 } });
-
-            /*          itemListMaster[0].Add(new int[,] { { 0, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 2 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 0 } });
-
-                        itemListMaster[0].Add(new int[,] { { 1, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 4 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 2 } });
-                        itemListMaster[0].Add(new int[,] { { 0, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 5 } });
-                        itemListMaster[0].Add(new int[,] { { 0, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 2 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 0 } });
-
-                        itemListMaster[0].Add(new int[,] { { 1, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 4 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 2 } });
-                        itemListMaster[0].Add(new int[,] { { 0, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 5 } });
-                        itemListMaster[0].Add(new int[,] { { 0, 1 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 2 } });
-                        itemListMaster[0].Add(new int[,] { { 1, 0 } });*/
-
-            itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            itemListMaster[1].Add(new int[,] { { 2, 5 } });
-            itemListMaster[1].Add(new int[,] { { 2, 1 } });
-            itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            itemListMaster[1].Add(new int[,] { { 2, 5 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 0 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 4 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 0 } });
-            //itemListMaster[3].Add(new int[,] { { 5, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 6, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 6, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 5, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 5, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 5, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 5, 2 } });
-            //itemListMaster[3].Add(new int[,] { { 4, 2 } });
-
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 4 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 5 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 1 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 2 } });
-            //itemListMaster[1].Add(new int[,] { { 2, 0 } });
-            //itemListMaster[1].Add(new int[,] { { 3, 2 } });
-
-            /*itemListMaster[1].Add(new int[,] { { 3, 1 }, { 3, 5 } });*//*
-            itemListMaster[2].Add(new int[,] { { 6, 2 }, { 6, 3 }, { 6, 5 } });
-            itemListMaster[3].Add(new int[,] { { 7, 1 }, { 7, 2 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 3 }, { 8, 5 } });*/
+            
 
             List<Thread> threadList = new List<Thread>();
             //spin multi-threading
