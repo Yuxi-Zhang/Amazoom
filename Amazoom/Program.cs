@@ -31,7 +31,11 @@ namespace Amazoom
 
             List<int[,]> itemList = new List<int[,]>();
             List<robot> robotList = new List<robot>();
-            var itemListMaster = new List<List<int[,]>>();
+           // var itemListMaster = new List<List<int[,]>>();
+            List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
+            List<int[,]> itemList2 = new List<int[,]>();
+            //List<int[]> itemList3 = new List<int[]>();
+            int[,] itemList3 = new int[1,1];
 
             // create a list for robots
             int column = warehouse1.mapX / robotNumber;
@@ -54,8 +58,30 @@ namespace Amazoom
                 itemListMaster.Add(itemList);
             }
 
+            int add = 0;
+            int check;
             //sort list and assign them to different small list
-            while(requst.Count != 0)
+            for (i = 0; i < requst.Count; i++)
+            {
+                
+                for(int j = 0; j < robotNumber; j++)
+                {
+                    if(requst[i][0, 0] >= robotList[j].columnMin)
+                    {
+                        bool tf = true;
+                        if(requst[i][0, 0] <= robotList[j].columnMax)
+                        {
+                            add++;
+                            check = j;
+                            itemList2 = itemListMaster[j];
+                            itemList3 = requst[i];
+                            itemListMaster[j].Add(requst[i]);
+                        }
+                    }
+                }
+            }
+
+            /*while(requst.Count != 0)
             {
                 for (i = 0; i < robotNumber; i++) {
 
@@ -73,10 +99,10 @@ namespace Amazoom
                     {
                         Console.WriteLine("the item is not validate + robot "+i);
                     }
-                           
+
                 }
 
-            }
+            }*/
 
             List<Thread> threadList = new List<Thread>();
             //spin multi-threading
