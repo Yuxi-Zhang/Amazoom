@@ -13,11 +13,11 @@ namespace Amazoom.Winform
 {
     public partial class Manager: Form
     {
-        public Manager(List<int[,]> shoppinglist, int[] map)
+        public Manager(List<int[,]> shoppinglist, int[] settings)
         {
             InitializeComponent();
             Program program = new Program();
-            program.run(shoppinglist, 1, map);
+            program.run(shoppinglist, 1, settings);
         }
 
 
@@ -70,10 +70,6 @@ namespace Amazoom.Winform
         {
             listBoxStocks.Items.Add("Item222");
             listBoxOrders.Items.Add("Check!");
-
-
-            
-
         }
 
 

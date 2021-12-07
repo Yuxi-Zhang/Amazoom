@@ -39,6 +39,8 @@ namespace Amazoom
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxRobots = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // customerBtn
@@ -77,7 +79,7 @@ namespace Amazoom
             // textBoxTotal
             // 
             this.textBoxTotal.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotal.Location = new System.Drawing.Point(806, 543);
+            this.textBoxTotal.Location = new System.Drawing.Point(465, 620);
             this.textBoxTotal.Name = "textBoxTotal";
             this.textBoxTotal.Size = new System.Drawing.Size(100, 43);
             this.textBoxTotal.TabIndex = 3;
@@ -85,7 +87,7 @@ namespace Amazoom
             // btnConfirm
             // 
             this.btnConfirm.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(940, 651);
+            this.btnConfirm.Location = new System.Drawing.Point(931, 660);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(171, 72);
             this.btnConfirm.TabIndex = 4;
@@ -96,7 +98,7 @@ namespace Amazoom
             // textBoxY
             // 
             this.textBoxY.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxY.Location = new System.Drawing.Point(806, 680);
+            this.textBoxY.Location = new System.Drawing.Point(783, 689);
             this.textBoxY.Name = "textBoxY";
             this.textBoxY.Size = new System.Drawing.Size(100, 43);
             this.textBoxY.TabIndex = 5;
@@ -104,7 +106,7 @@ namespace Amazoom
             // textBoxX
             // 
             this.textBoxX.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxX.Location = new System.Drawing.Point(806, 610);
+            this.textBoxX.Location = new System.Drawing.Point(465, 689);
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(100, 43);
             this.textBoxX.TabIndex = 6;
@@ -113,7 +115,7 @@ namespace Amazoom
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(544, 550);
+            this.label1.Location = new System.Drawing.Point(203, 627);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 36);
             this.label1.TabIndex = 7;
@@ -123,7 +125,7 @@ namespace Amazoom
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(704, 687);
+            this.label2.Location = new System.Drawing.Point(628, 696);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 36);
             this.label2.TabIndex = 8;
@@ -133,17 +135,37 @@ namespace Amazoom
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(688, 617);
+            this.label3.Location = new System.Drawing.Point(347, 696);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 36);
             this.label3.TabIndex = 9;
             this.label3.Text = "X: ";
+            // 
+            // textBoxRobots
+            // 
+            this.textBoxRobots.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRobots.Location = new System.Drawing.Point(783, 620);
+            this.textBoxRobots.Name = "textBoxRobots";
+            this.textBoxRobots.Size = new System.Drawing.Size(100, 43);
+            this.textBoxRobots.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(628, 627);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 36);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Robots:";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 764);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxRobots);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -174,6 +196,8 @@ namespace Amazoom
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxRobots;
+        private System.Windows.Forms.Label label4;
     }
 }
 

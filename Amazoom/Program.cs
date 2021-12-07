@@ -17,16 +17,16 @@ namespace Amazoom
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
 
-        public void run (List<int[,]> requst, int action, int[] map)
+        public void run (List<int[,]> requst, int action, int[] settings)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Home());
             
-            int robotNumber = 5;
+            int robotNumber = settings[2];
             int i = 0;
             warehouseMapInfo warehouse1 =
-            new warehouseMapInfo("warehouse1", map[0], map[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
+            new warehouseMapInfo("warehouse1", settings[0], settings[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
             //(0-7)(0-6)
 
             List<int[,]> itemList = new List<int[,]>();
@@ -44,7 +44,7 @@ namespace Amazoom
                 }
                 else
                 {
-                    robot bot = new robot(6, 1, warehouse1, i + 1, i * column, warehouse1.mapX);
+                    robot bot = new robot(6, 1, warehouse1, i + 1, i * column, warehouse1.mapX - 1);
                     robotList.Add(bot);
                 }
             }
@@ -58,17 +58,20 @@ namespace Amazoom
             while(requst.Count != 0)
             {
                 for (i = 0; i < robotNumber; i++) {
+
+                    if (requst.Count <= 0)
+                    {
+                        break;
+                    }
+
                     if (requst[0][0,0] >= robotList[i].columnMin && requst[0][0, 0] <= robotList[i].columnMax)
                     {
                         itemListMaster[i].Add((requst[0]));
-                        requst.RemoveAt(0);
-                        
-                            break;
-
+                        requst.RemoveAt(0); 
                     }
                     else
                     {
-                        Console.WriteLine("the item is not validate");
+                        Console.WriteLine("the item is not validate + robot "+i);
                     }
                            
                 }
