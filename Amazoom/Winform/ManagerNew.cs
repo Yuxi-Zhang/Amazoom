@@ -24,6 +24,7 @@ namespace Amazoom.Winform
         private void OrderTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
+
         }
     }
 }
