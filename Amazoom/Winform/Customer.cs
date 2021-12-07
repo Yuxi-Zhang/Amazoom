@@ -70,6 +70,7 @@ namespace customer
             string value2 = " ";
             int i = 0;
 
+
             foreach (DataGridViewRow row in dataGridView.SelectedRows)
             {
                 row1[0] = row.Cells[0].Value.ToString();
@@ -79,6 +80,7 @@ namespace customer
             }
 
             //string[,] Row = { value1, value2 };
+
         }
 
         //dataGridViewShoppingList.Rows.Add(row1);
@@ -101,13 +103,13 @@ namespace customer
         }
     }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) 
         {
             dataGridViewShoppingList.Rows.RemoveAt(dataGridViewShoppingList.SelectedRows[0].Index);
         }
 
         
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) //Place order button
         {
             int x = 0;
             int y = 0;
