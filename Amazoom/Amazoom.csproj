@@ -84,11 +84,11 @@
     <Compile Include="Winform\Form1.designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Winform\Form11.cs">
+    <Compile Include="Winform\manager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Winform\Form11.Designer.cs">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <Compile Include="Winform\manager.Designer.cs">
+      <DependentUpon>manager.cs</DependentUpon>
     </Compile>
     <Compile Include="Winform\Home.cs">
       <SubType>Form</SubType>
@@ -134,8 +134,8 @@
     <EmbeddedResource Include="Winform\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Winform\Form11.resx">
-      <DependentUpon>Form11.cs</DependentUpon>
+    <EmbeddedResource Include="Winform\manager.resx">
+      <DependentUpon>manager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Winform\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

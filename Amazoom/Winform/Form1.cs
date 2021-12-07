@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amazoom.Winform;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,21 +27,23 @@ namespace customer
 
         List<string[]> shoppingList = new List<string[]>();
         int i = 0;
-        public AO()
+        public AO(List<string[]> list)
         {
             InitializeComponent();
-            PopulateDataGridView();
+            goods = list;
+            PopulateDataGridView(goods);
+            
 
         }
-
-        private void PopulateDataGridView()
+        
+        private void PopulateDataGridView(List<string[]> goods)
         {
-            string[] row0 = { "A", "2" };
+            /*string[] row0 = { "A", "2" };
             string[] row1 = { "B", "5" };
             string[] row2 = { "C", "2" };
             goods.Add(row0);
             goods.Add(row1);
-            goods.Add(row2);
+            goods.Add(row2);*/
 
             for(i=0;i<goods.Count;i++)
             dataGridView.Rows.Add(goods[i]);
@@ -108,7 +111,9 @@ namespace customer
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //another form
+            var manager = new Manager(shoppingList);
+
+            manager.Show();
         }
     }
 }

@@ -12,9 +12,11 @@ namespace Amazoom.Winform
 {
     public partial class Manager: Form
     {
-        public Manager()
+        public Manager(List<string[]> shoppinglist)
         {
             InitializeComponent();
+            Program program = new Program();
+            program.run(shoppinglist, 1);
         }
 
 

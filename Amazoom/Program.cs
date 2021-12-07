@@ -80,7 +80,7 @@ namespace Amazoom
                 int temp = i;
                 Thread thread = new Thread(() =>
                 {
-                    robotList[temp].findRoute(itemListMaster[temp]);
+                    robotList[temp].findRoute(itemListMaster[temp], 1);
 
                 });
                 thread.Start();
