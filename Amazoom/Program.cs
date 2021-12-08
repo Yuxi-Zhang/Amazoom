@@ -16,6 +16,9 @@ namespace Amazoom
         //[STAThread]
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
+        public List<int[,]> itemList = new List<int[,]>();
+        public List<robot> robotList = new List<robot>();
+        public List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
 
         public void run (List<int[,]> requst, int action, int[] settings)
         {
@@ -29,16 +32,24 @@ namespace Amazoom
             new warehouseMapInfo("warehouse1", settings[0], settings[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
             //(0-7)(0-6)
 
-            List<int[,]> itemList = new List<int[,]>();
-            List<robot> robotList = new List<robot>();
+            //List<int[,]> itemList = new List<int[,]>();
+            //List<robot> robotList = new List<robot>();
            // var itemListMaster = new List<List<int[,]>>();
-            List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
+            //List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
             List<int[,]> itemList2 = new List<int[,]>();
             //List<int[]> itemList3 = new List<int[]>();
             int[,] itemList3 = new int[1,1];
 
             // create a list for robots
-            int column = warehouse1.mapX / robotNumber;
+            double temp2 = (double)warehouse1.mapX / robotNumber;
+            int column;
+            column = Convert.ToInt32(temp2);
+
+            //if((temp2 - column) > 0.5)
+            //{
+            //    temp2 = temp2 + 1;
+            //}
+
             for (i = 0; i < robotNumber; i++)
             {
                 if (i != robotNumber - 1)
@@ -54,31 +65,38 @@ namespace Amazoom
             }
 
             for (i = 0; i < robotNumber; i++)
-            { 
+            {
+                List<int[,]> itemList = new List<int[,]>();
                 itemListMaster.Add(itemList);
             }
+
 
             int add = 0;
             int check;
             //sort list and assign them to different small list
-            for (i = 0; i < requst.Count; i++)
+            while (requst.Count != 0)
             {
-                
-                for(int j = 0; j < robotNumber; j++)
+                for (i = 0; i < robotNumber; i++)
                 {
-                    if(requst[i][0, 0] >= robotList[j].columnMin)
+
+                    int ti = i;
+                    if (requst[0][0, 0] >= robotList[i].columnMin && requst[0][0, 0] <= robotList[i].columnMax)
                     {
-                        bool tf = true;
-                        if(requst[i][0, 0] <= robotList[j].columnMax)
-                        {
-                            add++;
-                            check = j;
-                            itemList2 = itemListMaster[j];
-                            itemList3 = requst[i];
-                            itemListMaster[j].Add(requst[i]);
-                        }
+                        int[,] temp = requst[0];
+                        itemListMaster[i].Add(temp);
+                        requst.RemoveAt(0);
+                        Console.WriteLine($"item assigned to robot{i}");
+                        break;
                     }
+                    if (requst[0][0, 0] > warehouse1.mapX)
+                    {
+                        Console.WriteLine($"item is not validate");
+                        break;
+                    }
+
+
                 }
+
             }
 
             /*while(requst.Count != 0)
