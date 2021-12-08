@@ -29,16 +29,28 @@ namespace customer
         List<string[]> shoppingList = new List<string[]>();
         List<int[,]> fromCustomer = new List<int[,]>();
         int[] settingXYR;
-
+        Dictionary<string, int[]> dicOrder = new Dictionary<string, int[]>();
         int i = 0;
+        public Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
         public AO(List<goods> stocks, int[] settings)
         {
             InitializeComponent();
             goods = stocks;
+
+            //Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
+            for (int index = 0; index < goods.Count; index++)
+            {
+                int[] position = new int[2];
+                position[0] = goods[index].posX;
+                position[1] = goods[index].posY;
+                dic.Add(goods[index].goodsname, position);
+            }
+
+
             settingXYR = settings;
             PopulateDataGridView(stocks);
         }
-        
+
         private void PopulateDataGridView(List<goods> stocks)
         {
             //string[] row0 = { "A", "2" };
@@ -84,31 +96,32 @@ namespace customer
         }
 
         //dataGridViewShoppingList.Rows.Add(row1);
-    
 
-    private void button1_Click(object sender, EventArgs e)
-    {
-        //string[] row1 = { "", "" };
-        //int i = 0;
-        string name;
-        string num;
-        while (dataGridViewShoppingList.RowCount != 1)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            //row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
-            //row1[1] = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
-            name = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
-            num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
-            shoppingList.Add(new string[] { name, num });
-            dataGridViewShoppingList.Rows.RemoveAt(0);
+            //string[] row1 = { "", "" };
+            //int i = 0;
+            string name;
+            string num;
+            while (dataGridViewShoppingList.RowCount != 1)
+            {
+                //row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+                //row1[1] = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+                name = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+                num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+                shoppingList.Add(new string[] { name, num });
+                dataGridViewShoppingList.Rows.RemoveAt(0);
+                dicOrder.Add(name, dic[name]);
+            }
         }
-    }
 
-        private void button2_Click(object sender, EventArgs e) 
+        private void button2_Click(object sender, EventArgs e)
         {
             dataGridViewShoppingList.Rows.RemoveAt(dataGridViewShoppingList.SelectedRows[0].Index);
         }
 
-        
+
         private void button1_Click_1(object sender, EventArgs e) //Place order button
         {
             int x = 0;
@@ -136,17 +149,24 @@ namespace customer
                     }
                 }
             }
-            
 
-            var manager = new Manager(fromCustomer, settingXYR);
+
+            var manager = new ManagerNew(goods, fromCustomer, settingXYR);
 
             manager.Show();
+
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             var newCustomer = new customer.AO(goods, settingXYR);
             newCustomer.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //var checkStatus = new CustomerOrder(dicOrder);
+            //checkStatus.Show();
         }
     }
 }

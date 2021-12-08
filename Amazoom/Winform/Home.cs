@@ -69,7 +69,7 @@ namespace Amazoom
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
-            var manager = new ManagerNew(stockList);
+            var manager = new ManagerNew(stockList, null, null);
             manager.Show();
         }
 
