@@ -92,7 +92,7 @@ namespace Amazoom.Motion
                           
                             Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
 
-                            warehouse.truckWaitingForLoading(RobotID, itemsInRobot,true);// true for delivering
+                            warehouse.truckWaitingForLoading(RobotID, itemsInRobot, action, maxCapacity);
 
                             if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
                             {
@@ -131,7 +131,8 @@ namespace Amazoom.Motion
                     xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
                     robotX = xy[0, 0];
                     robotY = xy[0, 1];
- 
+                    Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
+                    warehouse.truckWaitingForLoading(RobotID, itemsInRobot, action, maxCapacity);
 
                     if (maxCapacity > listsize)
                     {
@@ -141,6 +142,7 @@ namespace Amazoom.Motion
                     {
                         itemsInRobot = maxCapacity;
                     }
+
                     Console.WriteLine("\nRobot ID: " + RobotID.ToString() + $" Items in List: {itemsInRobot}");
 
                     while (itemsInRobot != 0)

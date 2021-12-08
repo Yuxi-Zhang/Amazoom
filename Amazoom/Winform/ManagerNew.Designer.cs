@@ -35,6 +35,10 @@ namespace Amazoom.Winform
             this.LowStock = new System.Windows.Forms.TextBox();
             this.OrderTree = new System.Windows.Forms.TreeView();
             this.ItemInStock = new System.Windows.Forms.DataGridView();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PositionX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PositionY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockAlert = new System.Windows.Forms.DataGridView();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +46,8 @@ namespace Amazoom.Winform
             this.StatusRobot = new System.Windows.Forms.DataGridView();
             this.RobotID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PositionX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PositionY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.restockA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ItemInStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StockAlert)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusRobot)).BeginInit();
@@ -102,7 +104,7 @@ namespace Amazoom.Winform
             // OrderTree
             // 
             this.OrderTree.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrderTree.Location = new System.Drawing.Point(195, 254);
+            this.OrderTree.Location = new System.Drawing.Point(195, 243);
             this.OrderTree.Name = "OrderTree";
             this.OrderTree.Size = new System.Drawing.Size(295, 238);
             this.OrderTree.TabIndex = 4;
@@ -123,6 +125,34 @@ namespace Amazoom.Winform
             this.ItemInStock.Size = new System.Drawing.Size(778, 150);
             this.ItemInStock.TabIndex = 5;
             // 
+            // ItemID
+            // 
+            this.ItemID.HeaderText = "ItemID";
+            this.ItemID.MinimumWidth = 10;
+            this.ItemID.Name = "ItemID";
+            this.ItemID.Width = 200;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 10;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 200;
+            // 
+            // PositionX
+            // 
+            this.PositionX.HeaderText = "Positionx";
+            this.PositionX.MinimumWidth = 10;
+            this.PositionX.Name = "PositionX";
+            this.PositionX.Width = 200;
+            // 
+            // PositionY
+            // 
+            this.PositionY.HeaderText = "PositionY";
+            this.PositionY.MinimumWidth = 10;
+            this.PositionY.Name = "PositionY";
+            this.PositionY.Width = 200;
+            // 
             // StockAlert
             // 
             this.StockAlert.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -130,7 +160,7 @@ namespace Amazoom.Winform
             this.Item,
             this.RemainQuantity,
             this.Restock});
-            this.StockAlert.Location = new System.Drawing.Point(945, 858);
+            this.StockAlert.Location = new System.Drawing.Point(935, 858);
             this.StockAlert.Name = "StockAlert";
             this.StockAlert.RowHeadersWidth = 82;
             this.StockAlert.RowTemplate.Height = 33;
@@ -185,39 +215,32 @@ namespace Amazoom.Winform
             this.Status.Name = "Status";
             this.Status.Width = 200;
             // 
-            // ItemID
+            // button1
             // 
-            this.ItemID.HeaderText = "ItemID";
-            this.ItemID.MinimumWidth = 10;
-            this.ItemID.Name = "ItemID";
-            this.ItemID.Width = 200;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // Quantity
+            // restockA
             // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 10;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 200;
-            // 
-            // PositionX
-            // 
-            this.PositionX.HeaderText = "Positionx";
-            this.PositionX.MinimumWidth = 10;
-            this.PositionX.Name = "PositionX";
-            this.PositionX.Width = 200;
-            // 
-            // PositionY
-            // 
-            this.PositionY.HeaderText = "PositionY";
-            this.PositionY.MinimumWidth = 10;
-            this.PositionY.Name = "PositionY";
-            this.PositionY.Width = 200;
+            this.restockA.Location = new System.Drawing.Point(1076, 1077);
+            this.restockA.Name = "restockA";
+            this.restockA.Size = new System.Drawing.Size(111, 49);
+            this.restockA.TabIndex = 9;
+            this.restockA.Text = "Restock";
+            this.restockA.UseVisualStyleBackColor = true;
+            this.restockA.Click += new System.EventHandler(this.restockA_Click);
             // 
             // ManagerNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1666, 1188);
+            this.Controls.Add(this.restockA);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.StatusRobot);
             this.Controls.Add(this.StockAlert);
             this.Controls.Add(this.ItemInStock);
@@ -255,5 +278,7 @@ namespace Amazoom.Winform
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn PositionX;
         private System.Windows.Forms.DataGridViewTextBoxColumn PositionY;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button restockA;
     }
 }

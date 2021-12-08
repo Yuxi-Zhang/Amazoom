@@ -168,5 +168,15 @@ namespace customer
             //var checkStatus = new CustomerOrder(dicOrder);
             //checkStatus.Show();
         }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void restock_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

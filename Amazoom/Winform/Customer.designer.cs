@@ -42,6 +42,7 @@ namespace customer
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.restock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShoppingList)).BeginInit();
             this.SuspendLayout();
@@ -56,14 +57,15 @@ namespace customer
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
             this.Stock});
-            this.dataGridView.Location = new System.Drawing.Point(21, 132);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView.Location = new System.Drawing.Point(18, 114);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(604, 544);
+            this.dataGridView.Size = new System.Drawing.Size(518, 469);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // productName
             // 
@@ -85,19 +87,19 @@ namespace customer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(222, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(190, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 40);
+            this.label1.Size = new System.Drawing.Size(187, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Product List";
             // 
             // buttonPlaceOrder
             // 
-            this.buttonPlaceOrder.Location = new System.Drawing.Point(782, 745);
-            this.buttonPlaceOrder.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonPlaceOrder.Location = new System.Drawing.Point(670, 642);
+            this.buttonPlaceOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonPlaceOrder.Name = "buttonPlaceOrder";
-            this.buttonPlaceOrder.Size = new System.Drawing.Size(248, 62);
+            this.buttonPlaceOrder.Size = new System.Drawing.Size(213, 53);
             this.buttonPlaceOrder.TabIndex = 2;
             this.buttonPlaceOrder.Text = "Place Order";
             this.buttonPlaceOrder.UseVisualStyleBackColor = true;
@@ -111,12 +113,12 @@ namespace customer
             this.dataGridViewShoppingList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dataGridViewShoppingList.Location = new System.Drawing.Point(782, 132);
-            this.dataGridViewShoppingList.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridViewShoppingList.Location = new System.Drawing.Point(670, 114);
+            this.dataGridViewShoppingList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewShoppingList.Name = "dataGridViewShoppingList";
             this.dataGridViewShoppingList.RowHeadersWidth = 51;
             this.dataGridViewShoppingList.RowTemplate.Height = 24;
-            this.dataGridViewShoppingList.Size = new System.Drawing.Size(600, 544);
+            this.dataGridViewShoppingList.Size = new System.Drawing.Size(514, 469);
             this.dataGridViewShoppingList.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -139,19 +141,19 @@ namespace customer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(961, 47);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(824, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(247, 40);
+            this.label2.Size = new System.Drawing.Size(223, 37);
             this.label2.TabIndex = 4;
             this.label2.Text = "Shopping Cart";
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(639, 399);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonAdd.Location = new System.Drawing.Point(548, 344);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(131, 42);
+            this.buttonAdd.Size = new System.Drawing.Size(112, 36);
             this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -159,10 +161,10 @@ namespace customer
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(639, 468);
-            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Location = new System.Drawing.Point(548, 403);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 42);
+            this.button2.Size = new System.Drawing.Size(112, 36);
             this.button2.TabIndex = 6;
             this.button2.Text = "Remove";
             this.button2.UseVisualStyleBackColor = true;
@@ -170,10 +172,10 @@ namespace customer
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1130, 745);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Location = new System.Drawing.Point(969, 642);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(248, 62);
+            this.button1.Size = new System.Drawing.Size(213, 53);
             this.button1.TabIndex = 7;
             this.button1.Text = "Quit";
             this.button1.UseVisualStyleBackColor = true;
@@ -181,20 +183,31 @@ namespace customer
             // 
             // btnNewCustomer
             // 
-            this.btnNewCustomer.Location = new System.Drawing.Point(308, 745);
-            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(5);
+            this.btnNewCustomer.Location = new System.Drawing.Point(264, 642);
+            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNewCustomer.Name = "btnNewCustomer";
-            this.btnNewCustomer.Size = new System.Drawing.Size(248, 62);
+            this.btnNewCustomer.Size = new System.Drawing.Size(213, 53);
             this.btnNewCustomer.TabIndex = 8;
             this.btnNewCustomer.Text = "New Customer";
             this.btnNewCustomer.UseVisualStyleBackColor = true;
             this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
+            // restock
+            // 
+            this.restock.Location = new System.Drawing.Point(71, 642);
+            this.restock.Name = "restock";
+            this.restock.Size = new System.Drawing.Size(105, 53);
+            this.restock.TabIndex = 9;
+            this.restock.Text = "Restock";
+            this.restock.UseVisualStyleBackColor = true;
+            this.restock.Click += new System.EventHandler(this.restock_Click);
+            // 
             // AO
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1405, 874);
+            this.ClientSize = new System.Drawing.Size(1204, 753);
+            this.Controls.Add(this.restock);
             this.Controls.Add(this.btnNewCustomer);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -204,7 +217,7 @@ namespace customer
             this.Controls.Add(this.buttonPlaceOrder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AO";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -229,6 +242,7 @@ namespace customer
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnNewCustomer;
+        private System.Windows.Forms.Button restock;
     }
 }
 

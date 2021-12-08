@@ -19,7 +19,7 @@ namespace Amazoom.Winform
         {
             InitializeComponent();
             Program program = new Program();
-            program.run(shoppinglist, 1, settings);
+            program.run(shoppinglist, 2, settings);
             stocks = stockList;
             PopulateDataGridView(stocks);
         }
@@ -49,6 +49,11 @@ namespace Amazoom.Winform
                 string[] row1 = { s1, s2, s3, s4 };
                 ItemInStock.Rows.Add(row1);
             }
+        }
+
+        private void restockA_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
