@@ -15,11 +15,11 @@ namespace Amazoom.Winform
     public partial class ManagerNew : Form
     {
         public List<goods> stocks = new List<goods>();
-        public ManagerNew(List<goods> stockList, List<int[,]> shoppinglist, int[] settings)
+        public ManagerNew(List<goods> stockList, List<int[,]> shoppinglist, int[] settings, int action)
         {
             InitializeComponent();
             Program program = new Program();
-            program.run(shoppinglist, 2, settings);
+            program.run(shoppinglist, action, settings);
             stocks = stockList;
             PopulateDataGridView(stocks);
         }

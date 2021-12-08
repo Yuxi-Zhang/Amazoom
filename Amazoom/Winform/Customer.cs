@@ -32,6 +32,7 @@ namespace customer
         Dictionary<string, int[]> dicOrder = new Dictionary<string, int[]>();
         int i = 0;
         public Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
+        int action;
         public AO(List<goods> stocks, int[] settings)
         {
             InitializeComponent();
@@ -114,6 +115,8 @@ namespace customer
                 dataGridViewShoppingList.Rows.RemoveAt(0);
                 dicOrder.Add(name, dic[name]);
             }
+
+            action = 1;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -151,7 +154,7 @@ namespace customer
             }
 
 
-            var manager = new ManagerNew(goods, fromCustomer, settingXYR);
+            var manager = new ManagerNew(goods, fromCustomer, settingXYR, action);
 
             manager.Show();
 
@@ -176,7 +179,21 @@ namespace customer
 
         private void restock_Click(object sender, EventArgs e)
         {
-            
+            string name;
+            string num;
+            while (dataGridViewShoppingList.RowCount != 1)
+            {
+                //row1[0] = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+                //row1[1] = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+                name = dataGridViewShoppingList.Rows[0].Cells[0].Value.ToString();
+                num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
+                shoppingList.Add(new string[] { name, num });
+                dataGridViewShoppingList.Rows.RemoveAt(0);
+                dicOrder.Add(name, dic[name]);
+            }
+
+            action = 2;
+
         }
     }
 }
