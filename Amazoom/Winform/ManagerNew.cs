@@ -14,11 +14,14 @@ namespace Amazoom.Winform
     
     public partial class ManagerNew : Form
     {
-        List<goods> stocks = new List<goods>();
-        public ManagerNew(List<goods> stockList)
+        public List<goods> stocks = new List<goods>();
+        public ManagerNew(List<goods> stockList, List<int[,]> shoppinglist, int[] settings)
         {
             InitializeComponent();
+            Program program = new Program();
+            program.run(shoppinglist, 1, settings);
             stocks = stockList;
+            PopulateDataGridView(stocks);
         }
 
         private void OrderTree_AfterSelect(object sender, TreeViewEventArgs e)

@@ -29,12 +29,24 @@ namespace customer
         List<string[]> shoppingList = new List<string[]>();
         List<int[,]> fromCustomer = new List<int[,]>();
         int[] settingXYR;
-
+        Dictionary<string, int[]> dicOrder = new Dictionary<string, int[]>();
         int i = 0;
+        public Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
         public AO(List<goods> stocks, int[] settings)
         {
             InitializeComponent();
             goods = stocks;
+
+            //Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
+            for(int index = 0; index < goods.Count; index++)
+            {
+                int[] position = new int[2];
+                position[0] = goods[index].posX;
+                position[1] = goods[index].posY;
+                dic.Add(goods[index].goodsname, position);               
+            }
+
+
             settingXYR = settings;
             PopulateDataGridView(stocks);
         }
@@ -100,6 +112,7 @@ namespace customer
             num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
             shoppingList.Add(new string[] { name, num });
             dataGridViewShoppingList.Rows.RemoveAt(0);
+            dicOrder.Add(name, dic[name]);
         }
     }
 
@@ -138,7 +151,7 @@ namespace customer
             }
             
 
-            var manager = new Manager(fromCustomer, settingXYR);
+            var manager = new ManagerNew(goods, fromCustomer, settingXYR);
 
             manager.Show();
         }
@@ -147,6 +160,12 @@ namespace customer
         {
             var newCustomer = new customer.AO(goods, settingXYR);
             newCustomer.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var checkStatus = new CustomerOrder(dicOrder);
+            checkStatus.Show();
         }
     }
 }
