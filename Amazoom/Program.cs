@@ -139,7 +139,9 @@ namespace Amazoom
             for (i = 0; i < robotNumber; i++)
             {
                 threadList[i].Join();
+               
             }
+            Console.WriteLine("all done");
         }
     }
 }
