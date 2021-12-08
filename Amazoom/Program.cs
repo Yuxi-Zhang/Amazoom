@@ -32,7 +32,7 @@ namespace Amazoom
             int robotNumber = settings[2];
             int i = 0;
             int truckNum = 2;
-            action = 1;
+            //action = 1;
             for(i=0;i< truckNum; i++)
             {
                 truckList.Add(new Truck(6, 0));

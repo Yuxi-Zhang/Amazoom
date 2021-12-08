@@ -28,6 +28,7 @@ namespace Amazoom.Motion
             this.docksLocation = dockslocation;
             this.shelvesLocation = shelvesLocation;
             this.truckList = Trucklist;
+            this.numOfTruck = truckList.Count;
         }
 
         public bool mapRealTimeInfo(int locationX, int locationY, int botID)
@@ -75,11 +76,12 @@ namespace Amazoom.Motion
             truckSema.Wait();
             Console.WriteLine($"*****turck {truckID} : is going to the dock********");
             Console.WriteLine($"****** turck {truckID} : is waiting for loading********");
+            truckList[0].itemsIntruck = truckList[0].maxcapacity;
         }
 
         public void truckWaitingForLoading(int robotID, int itemsInRobot, int action, int robotMaxCapacity )
         {
-
+            
             /*            if (truckList.Count > 0)
                         {
                             mut.WaitOne();
@@ -136,7 +138,7 @@ namespace Amazoom.Motion
                 if (truckList.Count > 0)
                 {
                     mut.WaitOne();
-                    truckList[0].itemsIntruck -= robotMaxCapacity;
+                    truckList[0].itemsIntruck -= 1;
                     mut.ReleaseMutex();
                     Console.WriteLine($"Robot ID : {robotID} picks up {itemsInRobot} items");
                     Console.WriteLine($"****Items in truck:  { truckList[0].itemsIntruck}****");
