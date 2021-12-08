@@ -15,8 +15,9 @@ namespace Amazoom
     public partial class Home : Form
     {
         public List<goods> toCustomer = new List<goods>();
+        public List<goods> stockList = new List<goods>();
         public List<goods> toCustomerZYX = new List<goods>();
-        public int[] map = new int[2];
+        public int[] settings = new int[3];
         //public all stock;
 
 
@@ -37,7 +38,7 @@ namespace Amazoom
             all stocks = new all();
             stocks.Initialize();
             //var customer = new customer.AO(stocks.getAll());
-            var customer = new customer.AO(toCustomerZYX, map);
+            var customer = new customer.AO(toCustomerZYX, settings);
             customer.Show();
         }
 
@@ -58,8 +59,8 @@ namespace Amazoom
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
-            //var manager = new Manager(toCustomer);
-            //manager.Show();
+            var manager = new ManagerNew(stockList, null, null);
+            manager.Show();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -68,10 +69,13 @@ namespace Amazoom
             int total = Convert.ToInt32(textBoxTotal.Text);
             int mapX = Convert.ToInt32(textBoxX.Text);
             int mapY = Convert.ToInt32(textBoxY.Text);
+            int numRobot = Convert.ToInt32(textBoxRobots.Text);
 
-            map[0] = mapX;
-            map[1] = mapY;
+            settings[0] = mapX;
+            settings[1] = mapY;
+            settings[2] = numRobot;
             toCustomerZYX = stocks.addStocks(total, mapX, mapY);
+            stockList = toCustomerZYX;
             //int XY = 10;
         }
     }

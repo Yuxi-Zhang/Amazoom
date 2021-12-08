@@ -25,30 +25,32 @@ namespace Amazoom.Item
 
         public List<goods> addStocks(int num, int mapX, int mapY)
         {
-            int X = 0, Y = 1;
+            int X = -1, Y = 0;
 
             for(int i = 0; i < num; i++)
             {
                 int quantity = 1;
                 string name = "item" + i.ToString();
 
-                if (X >= mapX)
+
+
+                if (X >= mapX-1)
                 {
                     Y++;
-                    X = 1;
-                    if (Y > mapY)
+                    X = 0;
+                    if (Y > mapY-1)
                     {
-                        Y = 1;
+                        Y = 0;
                     }
                 }
                 else
                 {
                     //Y++;
                     X++;
-                    if (Y > mapY)
+                    if (Y > mapY-1)
                     {
-                        Y = 1;
-                        X = 1;
+                        Y = 0;
+                        X = 0;
                     }
 
                     

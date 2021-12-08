@@ -42,6 +42,7 @@ namespace customer
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShoppingList)).BeginInit();
             this.SuspendLayout();
@@ -190,11 +191,22 @@ namespace customer
             this.btnNewCustomer.UseVisualStyleBackColor = true;
             this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(602, 33);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(213, 54);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Check Status";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // AO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1405, 874);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnNewCustomer);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -229,6 +241,7 @@ namespace customer
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnNewCustomer;
+        private System.Windows.Forms.Button button3;
     }
 }
 

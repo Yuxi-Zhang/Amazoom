@@ -27,14 +27,26 @@ namespace customer
         List<goods> goods = new List<goods>();
         List<string[]> shoppingList = new List<string[]>();
         List<int[,]> fromCustomer = new List<int[,]>();
-        int[] mapXY;
-
+        int[] settingXYR;
+        Dictionary<string, int[]> dicOrder = new Dictionary<string, int[]>();
         int i = 0;
-        public AO(List<goods> stocks, int[] map)
+        public Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
+        public AO(List<goods> stocks, int[] settings)
         {
             InitializeComponent();
             goods = stocks;
-            mapXY = map;
+
+            //Dictionary<string, int[]> dic = new Dictionary<string, int[]>();
+            for(int index = 0; index < goods.Count; index++)
+            {
+                int[] position = new int[2];
+                position[0] = goods[index].posX;
+                position[1] = goods[index].posY;
+                dic.Add(goods[index].goodsname, position);               
+            }
+
+
+            settingXYR = settings;
             PopulateDataGridView(stocks);
         }
         
@@ -69,6 +81,7 @@ namespace customer
             string value2 = " ";
             int i = 0;
 
+
             foreach (DataGridViewRow row in dataGridView.SelectedRows)
             {
                 row1[0] = row.Cells[0].Value.ToString();
@@ -78,6 +91,7 @@ namespace customer
             }
 
             //string[,] Row = { value1, value2 };
+
         }
 
         //dataGridViewShoppingList.Rows.Add(row1);
@@ -97,16 +111,17 @@ namespace customer
             num = dataGridViewShoppingList.Rows[0].Cells[1].Value.ToString();
             shoppingList.Add(new string[] { name, num });
             dataGridViewShoppingList.Rows.RemoveAt(0);
+            dicOrder.Add(name, dic[name]);
         }
     }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) 
         {
             dataGridViewShoppingList.Rows.RemoveAt(dataGridViewShoppingList.SelectedRows[0].Index);
         }
 
         
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) //Place order button
         {
             int x = 0;
             int y = 0;
@@ -135,12 +150,20 @@ namespace customer
             }
             
 
+            var manager = new ManagerNew(goods, fromCustomer, settingXYR);
+
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
-            var newCustomer = new customer.AO(goods, mapXY);
+            var newCustomer = new customer.AO(goods, settingXYR);
             newCustomer.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var checkStatus = new CustomerOrder(dicOrder);
+            checkStatus.Show();
         }
     }
 }
