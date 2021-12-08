@@ -108,7 +108,7 @@ namespace Amazoom.Item
           }*/
 
 
-        public static void changeload(Truck truckname, int pickupnum, goods itemtochange, bool isstock)
+/*        public static void changeload(Truck truckname, int pickupnum, goods itemtochange, bool isstock)
         {
             //if isstock is true, means it is a restocking truck and we are trying to pickup from the truck, 
             //so decrease the goods number from the truck --> and add load to the robot
@@ -125,12 +125,12 @@ namespace Amazoom.Item
 
             }
             else
-            {
+            {*/
 
 
+/*
 
-
-            }
+            }*/
 
 
 
@@ -143,4 +143,4 @@ namespace Amazoom.Item
 
 
     }
-}
+

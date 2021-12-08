@@ -66,7 +66,7 @@ namespace Amazoom.Item
             _restockcome = new Semaphore(0, rdock);//ideally it is the user to input this like how many spots avaliable for truck to stay
             _loadcome = new Semaphore(0, ddock);
             Truck currenttruck;
-            Task[] tasks = new Task[5];
+            Task[] tasks = new Task[ddock+rdock];
 
 
 

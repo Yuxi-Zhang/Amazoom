@@ -1,6 +1,5 @@
 ﻿using Amazoom;
 using Amazoom.Item;
-using Amazoom.Winform;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -136,9 +135,6 @@ namespace customer
             }
             
 
-            var manager = new Manager(fromCustomer, mapXY);
-
-            manager.Show();
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
