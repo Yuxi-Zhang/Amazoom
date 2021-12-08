@@ -92,7 +92,7 @@ namespace Amazoom.Motion
                           
                             Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
 
-                            warehouse.truckWaitingForLoading(RobotID, itemsInRobot);
+                            warehouse.truckWaitingForLoading(RobotID, itemsInRobot,true);// true for delivering
 
                             if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
                             {
