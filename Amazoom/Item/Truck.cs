@@ -18,7 +18,7 @@ namespace Amazoom.Item
         public int maxcapacity;
         public int itemsIntruck;
 
-        public Truck(int maxcpacity,int itemsIntruck)
+        public Truck(int maxcapacity, int itemsIntruck)
         {
             this.maxcapacity = maxcapacity;
             this.itemsIntruck = itemsIntruck;

@@ -76,7 +76,8 @@ namespace Amazoom.Motion
             truckSema.Wait();
             Console.WriteLine($"*****turck {truckID} : is going to the dock********");
             Console.WriteLine($"****** turck {truckID} : is waiting for loading********");
-            truckList[0].itemsIntruck = truckList[0].maxcapacity;
+            if(action ==2 )
+                truckList[0].itemsIntruck = truckList[0].maxcapacity;
         }
 
         public void truckWaitingForLoading(int robotID, int itemsInRobot, int action, int robotMaxCapacity )
@@ -135,15 +136,14 @@ namespace Amazoom.Motion
             }
             else if (action == 2)
             {
+      
                 if (truckList.Count > 0)
                 {
                     mut.WaitOne();
-                    truckList[0].itemsIntruck -= 1;
-                    mut.ReleaseMutex();
+                    truckList[0].itemsIntruck -= itemsInRobot;
                     Console.WriteLine($"Robot ID : {robotID} picks up {itemsInRobot} items");
                     Console.WriteLine($"****Items in truck:  { truckList[0].itemsIntruck}****");
-
-                    if(truckList[0].itemsIntruck == 0)
+                    if ((truckList[0].itemsIntruck - itemsInRobot) < 0)
                     {
                         truckSema.Release();
                         Console.WriteLine($"*********turck is leaving*********");
@@ -156,6 +156,7 @@ namespace Amazoom.Motion
                             Console.WriteLine("no more truck is available");
                         }
                     }
+                    mut.ReleaseMutex();
                     
                 }
             }
