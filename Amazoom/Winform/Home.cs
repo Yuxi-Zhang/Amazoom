@@ -20,17 +20,27 @@ namespace Amazoom
         public int[] settings = new int[3];
         //public all stock;
 
+        //public all stocks;
+        public int total;
+        public int mapX;
+        public int mapY;
+        public int numRobot;
 
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Home());
+            
 
         }
         public Home()
         {
             InitializeComponent();
+            textBoxTotal.Text = "10";
+            textBoxX.Text = "9";
+            textBoxY.Text = "9";
+            textBoxRobots.Text = "5";
         }
 
         private void customerBtn_Click(object sender, EventArgs e)
@@ -66,10 +76,10 @@ namespace Amazoom
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             all stocks = new all();
-            int total = Convert.ToInt32(textBoxTotal.Text);
-            int mapX = Convert.ToInt32(textBoxX.Text);
-            int mapY = Convert.ToInt32(textBoxY.Text);
-            int numRobot = Convert.ToInt32(textBoxRobots.Text);
+            total = Convert.ToInt32(textBoxTotal.Text);
+            mapX = Convert.ToInt32(textBoxX.Text);
+            mapY = Convert.ToInt32(textBoxY.Text);
+            numRobot = Convert.ToInt32(textBoxRobots.Text);
 
             settings[0] = mapX;
             settings[1] = mapY;

@@ -19,17 +19,27 @@ namespace Amazoom
         public List<int[,]> itemList = new List<int[,]>();
         public List<robot> robotList = new List<robot>();
         public List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
+        public List<Truck> truckList = new List<Truck>();
 
         public void run (List<int[,]> requst, int action, int[] settings)
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Home());
-            
+
+            List<Truck> truckList = new List<Truck>();
+
             int robotNumber = settings[2];
             int i = 0;
+            int truckNum = 2;
+            action = 1;
+            for(i=0;i< truckNum; i++)
+            {
+                truckList.Add(new Truck(6, 0));
+            }
+            
             warehouseMapInfo warehouse1 =
-            new warehouseMapInfo("warehouse1", settings[0], settings[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
+            new warehouseMapInfo("warehouse1", settings[0], settings[1], new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } },truckList);
             //(0-7)(0-6)
 
             //List<int[,]> itemList = new List<int[,]>();
@@ -136,11 +146,31 @@ namespace Amazoom
                 threadList.Add(thread);
             }
 
+            List<Thread> truckthreadList = new List<Thread>();
+            for (i = 0; i < truckNum; i++)
+            {
+                int temp = i;
+                Thread threadtruck = new Thread(() =>
+                {
+                    warehouse1.truckTask(warehouse1.truckList[temp],temp,action);
+                });
+
+                threadtruck.Start();
+                truckthreadList.Add(threadtruck);
+            }
+
+            for (i = 0; i < warehouse1.numOfTruck; i++)
+            {
+                truckthreadList[i].Join();
+
+            }
+
             for (i = 0; i < robotNumber; i++)
             {
                 threadList[i].Join();
                
             }
+
             Console.WriteLine("all done");
         }
     }

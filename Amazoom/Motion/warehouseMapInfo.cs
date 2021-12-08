@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using Amazoom.Item;
 
 namespace Amazoom.Motion
 {
@@ -14,15 +15,20 @@ namespace Amazoom.Motion
         public int[,] shelvesLocation; //size of 2, first one represent the left top corner, the second one represents bottom right corner
         Mutex mut = new Mutex();
         public SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+        bool dockFlag;
+        public int numOfTruck;
+        public SemaphoreSlim truckSema = new SemaphoreSlim(1);
         bool flag;
+        public List<Truck> truckList;
 
-        public warehouseMapInfo(string mapName, int mapX, int mapY, int[,] dockslocation, int[,] shelvesLocation)
+        public warehouseMapInfo(string mapName, int mapX, int mapY, int[,] dockslocation, int[,] shelvesLocation, List<Truck> Trucklist)
         {
             this.mapX = mapX;
             this.mapY = mapY;
             this.mapName = mapName;
             this.docksLocation = dockslocation;
             this.shelvesLocation = shelvesLocation;
+            this.truckList = Trucklist;
         }
 
         public bool mapRealTimeInfo(int locationX, int locationY, int botID)
@@ -62,6 +68,43 @@ namespace Amazoom.Motion
             {
                 return false;
             }
+        }
+
+        public void truckTask(Truck truck,int truckID,int action)
+        {
+            Console.WriteLine($"*****turck {truckID} : is waiting for the dock********");
+            truckSema.Wait();
+            Console.WriteLine($"*****turck {truckID} : is going to for the dock********");
+            Console.WriteLine($"****** turck {truckID} : is waiting for loading********");
+        }
+
+        public void truckWaitingForLoading(int robotID, int itemsInRobot)
+        {
+
+            if (truckList.Count > 0)
+            {
+                mut.WaitOne();
+                truckList[0].itemsIntruck += itemsInRobot;
+                mut.ReleaseMutex();
+                Console.WriteLine($"Robot ID : {robotID} drops {itemsInRobot} items");
+                Console.WriteLine($"****Items in truck:  { truckList[0].itemsIntruck}****");
+
+
+                if (truckList[0].itemsIntruck > truckList[0].maxcapacity)
+                {
+                    truckSema.Release();
+                    Console.WriteLine($"*********turck is leaving*********");
+                    if (truckList.Count > 0)
+                    {
+                        truckList.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("no more truck is available");
+                    }
+                }
+            }
+            
         }
     }
 }

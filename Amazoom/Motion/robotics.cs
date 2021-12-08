@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using Amazoom.Item;
 
 namespace Amazoom.Motion
 {
@@ -24,6 +25,7 @@ namespace Amazoom.Motion
 
 
 
+
         public robot(int maxCapacity, double speed, warehouseMapInfo warehouse, int RobotID, int columnMin, int columnMax)
         {
             this.maxCapacity = maxCapacity;
@@ -34,6 +36,7 @@ namespace Amazoom.Motion
             this.columnMax = columnMax;
             this.columnMin = columnMin;
             this.RobotID = RobotID;
+
         }
 
         public void findRoute(List<int[,]> items, int action)   //action =1 pick up items. action = 2, restock
@@ -86,8 +89,10 @@ namespace Amazoom.Motion
                             xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
                             robotX = xy[0, 0];
                             robotY = xy[0, 1];
-
+                          
                             Console.WriteLine("Robot ID: " + RobotID.ToString() + $" arrives dock (location: {robotX}, {robotY})");
+
+                            warehouse.truckWaitingForLoading(RobotID, itemsInRobot);
 
                             if (robotX == warehouse.docksLocation[0, 0] && robotY == warehouse.docksLocation[0, 1])
                             {
@@ -126,6 +131,7 @@ namespace Amazoom.Motion
                     xy = advacnePathFinder(robotX, robotY, warehouse.docksLocation);
                     robotX = xy[0, 0];
                     robotY = xy[0, 1];
+ 
 
                     if (maxCapacity > listsize)
                     {
@@ -182,6 +188,7 @@ namespace Amazoom.Motion
             while (true)
             {
                 //Thread.Sleep(100);
+                Thread.Sleep(100);
                 if (robotX < targetLocation[0, 0])
                 {
                     if (robotY == 0 || robotY == warehouse.mapY - 2)
