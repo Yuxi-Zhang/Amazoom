@@ -230,13 +230,13 @@ namespace Amazoom.Motion
 
                 //critical region check
 
-                criticalCheckFlag = warehouse.criticalRegionCheck(robotX, robotY);
-                if (criticalCheckFlag == true)
-                {
-                    if (flag == true)
-                        flag = warehouse.mapRealTimeInfo(robotX, robotY, RobotID);
-                }
-                else { };
+                ////criticalCheckFlag = warehouse.criticalRegionCheck(robotX, robotY);
+                //if (criticalCheckFlag == true)
+                //{
+                //    if (flag == true)
+                //        flag = warehouse.mapRealTimeInfo(robotX, robotY, RobotID);
+                //}
+                //else { };
 
                 Console.WriteLine("Robot ID: " + RobotID.ToString() + $" X: {robotX}, Y: {robotY}");
                 if (robotY != warehouse.mapY - 1 && flag == false)

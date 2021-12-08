@@ -51,17 +51,17 @@ namespace Amazoom.Motion
             return flag = true;
         }
 
-        public bool criticalRegionCheck(int locationX, int locationY)
-        {
-            bool flag;
-            if (locationY == 0 || locationY == mapY - 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public bool criticalRegionCheck(int locationX, int locationY)
+        //{
+        //    bool flag;
+        //    if (locationY == 0 || locationY == mapY - 1)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

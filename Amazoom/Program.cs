@@ -16,6 +16,9 @@ namespace Amazoom
         //[STAThread]
         public ConcurrentQueue<int[,]> itemQ = new ConcurrentQueue<int[,]>();
         public Random rnd = new Random();
+        public List<int[,]> itemList = new List<int[,]>();
+        public List<robot> robotList = new List<robot>();
+        public List<List<int[,]>> itemListMaster = new List<List<int[,]>>();
 
         public void run (List<int[,]> requst, int action)
         {
@@ -26,15 +29,21 @@ namespace Amazoom
             int robotNumber = 5;
             int i = 0;
             warehouseMapInfo warehouse1 =
-            new warehouseMapInfo("warehouse1", 8, 8, new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
+            new warehouseMapInfo("warehouse1", 9, 9, new int[,] { { 2, 7 }, { 3, 7 } }, new int[,] { { 1, 2 }, { 8, 4 } });
             //(0-7)(0-6)
 
-            List<int[,]> itemList = new List<int[,]>();
-            List<robot> robotList = new List<robot>();
-            var itemListMaster = new List<List<int[,]>>();
+           
 
             // create a list for robots
-            int column = warehouse1.mapX / robotNumber;
+            double temp2 = (double)warehouse1.mapX / robotNumber;
+            int column;
+            column = Convert.ToInt32(temp2); 
+            
+            //if((temp2 - column) > 0.5)
+            //{
+            //    temp2 = temp2 + 1;
+            //}
+
             for (i = 0; i < robotNumber; i++)
             {
                 if (i != robotNumber - 1)
@@ -44,13 +53,14 @@ namespace Amazoom
                 }
                 else
                 {
-                    robot bot = new robot(6, 1, warehouse1, i + 1, i * column, warehouse1.mapX);
+                    robot bot = new robot(6, 1, warehouse1, i + 1, i * column, warehouse1.mapX-1);
                     robotList.Add(bot);
                 }
             }
 
             for (i = 0; i < robotNumber; i++)
-            { 
+            {
+                List<int[,]> itemList = new List<int[,]>();
                 itemListMaster.Add(itemList);
             }
 
@@ -58,19 +68,23 @@ namespace Amazoom
             while(requst.Count != 0)
             {
                 for (i = 0; i < robotNumber; i++) {
+
+                    int ti = i;
                     if (requst[0][0,0] >= robotList[i].columnMin && requst[0][0, 0] <= robotList[i].columnMax)
                     {
-                        itemListMaster[i].Add((requst[0]));
+                        int[,] temp = requst[0]; 
+                        itemListMaster[i].Add(temp);
                         requst.RemoveAt(0);
-                        
+                        Console.WriteLine($"item assigned to robot{i}");
                             break;
-
                     }
-                    else
+                    if (requst[0][0, 0] > warehouse1.mapX )
                     {
-                        Console.WriteLine("the item is not validate");
+                        Console.WriteLine($"item is not validate");
+                        break;
                     }
-                           
+
+
                 }
 
             }
@@ -93,6 +107,7 @@ namespace Amazoom
             {
                 threadList[i].Join();
             }
+            Thread.Sleep(10000000);
         }
     }
 }

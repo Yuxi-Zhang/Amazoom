@@ -56,13 +56,13 @@ namespace customer
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productName,
             this.Stock});
-            this.dataGridView.Location = new System.Drawing.Point(21, 132);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView.Location = new System.Drawing.Point(9, 55);
+            this.dataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(604, 544);
+            this.dataGridView.Size = new System.Drawing.Size(259, 225);
             this.dataGridView.TabIndex = 0;
             // 
             // productName
@@ -85,19 +85,19 @@ namespace customer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(222, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(95, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 40);
+            this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Product List";
             // 
             // buttonPlaceOrder
             // 
-            this.buttonPlaceOrder.Location = new System.Drawing.Point(782, 745);
-            this.buttonPlaceOrder.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonPlaceOrder.Location = new System.Drawing.Point(335, 308);
+            this.buttonPlaceOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonPlaceOrder.Name = "buttonPlaceOrder";
-            this.buttonPlaceOrder.Size = new System.Drawing.Size(248, 62);
+            this.buttonPlaceOrder.Size = new System.Drawing.Size(106, 26);
             this.buttonPlaceOrder.TabIndex = 2;
             this.buttonPlaceOrder.Text = "Place Order";
             this.buttonPlaceOrder.UseVisualStyleBackColor = true;
@@ -111,12 +111,12 @@ namespace customer
             this.dataGridViewShoppingList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dataGridViewShoppingList.Location = new System.Drawing.Point(782, 132);
-            this.dataGridViewShoppingList.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridViewShoppingList.Location = new System.Drawing.Point(335, 55);
+            this.dataGridViewShoppingList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewShoppingList.Name = "dataGridViewShoppingList";
             this.dataGridViewShoppingList.RowHeadersWidth = 51;
             this.dataGridViewShoppingList.RowTemplate.Height = 24;
-            this.dataGridViewShoppingList.Size = new System.Drawing.Size(600, 544);
+            this.dataGridViewShoppingList.Size = new System.Drawing.Size(257, 225);
             this.dataGridViewShoppingList.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -139,19 +139,19 @@ namespace customer
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(961, 47);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(412, 19);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(247, 40);
+            this.label2.Size = new System.Drawing.Size(111, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Shopping Cart";
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(639, 399);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonAdd.Location = new System.Drawing.Point(274, 165);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(131, 42);
+            this.buttonAdd.Size = new System.Drawing.Size(56, 17);
             this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -159,10 +159,10 @@ namespace customer
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(639, 468);
-            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Location = new System.Drawing.Point(274, 194);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 42);
+            this.button2.Size = new System.Drawing.Size(56, 17);
             this.button2.TabIndex = 6;
             this.button2.Text = "Remove";
             this.button2.UseVisualStyleBackColor = true;
@@ -170,10 +170,10 @@ namespace customer
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1130, 745);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Location = new System.Drawing.Point(484, 308);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(248, 62);
+            this.button1.Size = new System.Drawing.Size(106, 26);
             this.button1.TabIndex = 7;
             this.button1.Text = "Quit";
             this.button1.UseVisualStyleBackColor = true;
@@ -181,10 +181,10 @@ namespace customer
             // 
             // btnNewCustomer
             // 
-            this.btnNewCustomer.Location = new System.Drawing.Point(308, 745);
-            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(5);
+            this.btnNewCustomer.Location = new System.Drawing.Point(132, 308);
+            this.btnNewCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNewCustomer.Name = "btnNewCustomer";
-            this.btnNewCustomer.Size = new System.Drawing.Size(248, 62);
+            this.btnNewCustomer.Size = new System.Drawing.Size(106, 26);
             this.btnNewCustomer.TabIndex = 8;
             this.btnNewCustomer.Text = "New Customer";
             this.btnNewCustomer.UseVisualStyleBackColor = true;
@@ -192,9 +192,9 @@ namespace customer
             // 
             // AO
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1405, 874);
+            this.ClientSize = new System.Drawing.Size(602, 362);
             this.Controls.Add(this.btnNewCustomer);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -204,7 +204,7 @@ namespace customer
             this.Controls.Add(this.buttonPlaceOrder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AO";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
